@@ -1,0 +1,38 @@
+{
+  "name": "school_nuxt",
+  "version": "1.0.0",
+  "description": "My kryptonian Nuxt.js project",
+  "author": "God_Z",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@nuxtjs/axios": "^5.3.6",
+    "@stomp/stompjs": "^5.2.0",
+    "element-ui": "^2.5.4",
+    "js-cookie": "^2.2.0",
+    "jsonwebtoken": "^8.4.0",
+    "moment": "^2.24.0",
+    "nuxt": "^2.4.3",
+    "qrcode": "^1.3.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.13.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-vue": "^5.1.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "nodemon": "^1.18.10"
+  }
+}
