@@ -8,6 +8,7 @@ const api = {
   query: '/jobs/jobfair/query_g',
   fetch: '/jobs/jobfair/fetch',
   corp_list: '/jobs/jobfair/corp/list',
+  calendar: '/jobs/jobfair/calendar'
 };
 // initial state
 export const state = () => ({
@@ -15,7 +16,7 @@ export const state = () => ({
   items: [],
   current: null,
   total: 0,
-  corp_list: []
+  corp_list: [],
 });
 
 // actions
@@ -48,6 +49,10 @@ export const actions = {
     const res = await this.$axios.$get(`${api.corp_list}?fair_id=${id}`);
     if (res.errcode === 0) commit(types.LOADED_CORP_LIST, res.data);
     return res;
+  },
+  async calendar({ commit }, { month }) {
+    const res = await this.$axios.$get(`${api.calendar}?month=${month}`);
+    return res;
   }
 };
 
@@ -65,7 +70,7 @@ export const mutations = {
   },
   [types.LOADED_CORP_LIST](state, payload) {
     state.corp_list = payload;
-  }
+  },
 };
 
 export const namespaced = true;

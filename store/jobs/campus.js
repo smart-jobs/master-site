@@ -4,6 +4,7 @@ const api = {
   simple: '/jobs/campus/simple',
   query: '/jobs/campus/query',
   fetch: '/jobs/campus/fetch',
+  calendar: '/jobs/campus/calendar'
 };
 // initial state
 export const state = () => ({
@@ -39,6 +40,10 @@ export const actions = {
     if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
     return res;
   },
+  async calendar2({ commit }, { month }) {
+    const res = await this.$axios.$get(`${api.calendar}?month=${month}`);
+    return res;
+  }
 };
 
 // mutations
