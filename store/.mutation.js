@@ -7,6 +7,7 @@ export const ITEM_DELETED = 'ITEM_DELETED';
 export const ITEM_CREATED = 'ITEM_CREATED';
 export const ITEM_UPDATED = 'ITEM_UPDATED';
 
+export const SITE_INIT = 'SITE_INIT';
 export const SET_PAGE = 'SET_PAGE';
 export const SET_COLUMN = 'SET_COLUMN';
 
