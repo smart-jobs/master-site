@@ -31,6 +31,10 @@ const menu = [{
     label: '就业快讯',
     link: '/news/flash',
     key: 'flash',
+  }, {
+    label: '通知公告',
+    link: '/news/notice',
+    key: 'notice',
   }],
 }, {
   label: '招聘信息',
