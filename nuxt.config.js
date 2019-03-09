@@ -55,7 +55,7 @@ module.exports = {
     prefix: '/www/api',
   },
   proxy: [
-    'http://99991.smart.jilinjobswx.cn/www/api',
+    'http://smart.jilinjobswx.cn/www/api',
     'http://smart.jilinjobswx.cn/ws',
   ],
 
