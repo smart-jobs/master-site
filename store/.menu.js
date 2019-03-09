@@ -58,6 +58,12 @@ const menu = [{
   label: '联系我们',
   link: '/about/contact',
   key: 'about',
-}];
+},
+{
+  label: '分站列表',
+  link: '/websitelist',
+  key: 'about',
+}
+];
 
 export default menu;

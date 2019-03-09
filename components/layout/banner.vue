@@ -6,22 +6,34 @@
       <img :src="bj2" v-else class="bottom">
     </div>
     <div class="logobox">
-      <div class="logo" v-if="logo2 == null">{{logo}}</div>
+      <div class="logo" v-if="logo2 == null">{{sites && sites.name}} | 就业信息网</div>
       <img :src="logo2" v-else class="logo">
     </div>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
+
+const { mapActions, mapState } = createNamespacedHelpers('news');
+
 export default {
   name: 'home',
   data() {
     return {
       bj1: '/img/1477572201-3251.jpg',
       bj2: '/img/bg-shade.png',
-      logo: '智慧就业中心 | 就业信息网',
       logo2: null
     }
+  },
+  methods: {
+    ...mapActions(['site'])
+  },
+  mounted() {
+    this.site()
+  },
+  computed: {
+    ...mapState(['sites']),
   }
 }
 </script>

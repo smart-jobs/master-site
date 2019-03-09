@@ -9,9 +9,9 @@
         </div>
       </div>
       <ul class="ul">
-        <li v-for="(item,index) in data" :key="index" class="fj">
-          <span class="time fd1">{{item.time}}</span>
-          <a class="fd1 txt2">{{item.txt}}</a>
+        <li v-for="(item,index) in items" :key="index" class="fj">
+          <span class="txt2 fd1">{{item.title}}</span>
+          <a class="fd2 time">{{item.meta.createdAt | time}}</a>
         </li>
       </ul>
     </div>
@@ -19,17 +19,37 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
+
+const { mapActions, mapState } = createNamespacedHelpers('news');
 export default {
   name: 'Journalism',
   data() {
     return {
-      data: [
-        { txt: '本周中国南方航空股份有限公司将来校招聘', time: '3-9' },
-        { txt: '本周中国南方航空股份有限公司将来校招聘', time: '3-9' },
-        { txt: '本周中国南方航空股份有限公司将来校招聘', time: '3-9' },
-        { txt: '本周中国南方航空股份有限公司将来校招聘', time: '3-9' },
-        { txt: '本周中国南方航空股份有限公司将来校招聘', time: '3-9' }
-      ]
+      page: 1, // 页数
+      pagesize: 20, // 条数
+    };
+  },
+  mounted() {
+    this.query({page:this.page,pagesize:this.pagesize,column:'flash'})
+  },
+  methods: {
+    ...mapActions(['query']),
+    handleCurrentChange(val) {
+      this.query({page:val,pagesize:this.pagesize,column:'flash'})
+    },
+    Obtain(item) {
+      let _id = item._id
+      this.$router.push('/news/flash/'+_id)
+    },
+  },
+  computed: {
+    ...mapState(['items']),
+  },
+  filters: {
+    time: function (val){
+      let a = val.slice(0,10)
+      return a
     }
   }
 }
@@ -78,10 +98,11 @@ export default {
   margin: 10px auto;
 }
 .time {
-  width: 15%;
+  width: 50%;
+  text-align: right;
 }
 .txt2 {
-  width: 85%;
+  width: 50%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

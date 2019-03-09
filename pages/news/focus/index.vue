@@ -25,16 +25,16 @@ export default {
     };
   },
   mounted() {
-    this.query({page:this.page,pagesize:this.pagesize,column:'flash'})
+    this.query({page:this.page,pagesize:this.pagesize,column:'focus'})
   },
   methods: {
     ...mapActions(['query']),
     handleCurrentChange(val) {
-      this.query({page:val,pagesize:this.pagesize,column:'flash'})
+      this.query({page:val,pagesize:this.pagesize,column:'focus'})
     },
     Obtain(item) {
       let _id = item._id
-      this.$router.push('/news/'+_id)
+      this.$router.push('/news/focus/'+_id)
     },
   },
   computed: {

@@ -146,13 +146,11 @@ export default {
         month: month
       });
       if (this.$checkRes(res)) {
-        console.log(res)
         this.list = res.data;
         const rest = await this.calendar2({
           month: month
         });
         if (this.$checkRes(rest)) {
-          console.log(rest)
           this.items = rest.data;
           this.Obtain();
         }

@@ -18,7 +18,6 @@ export default {
   },
   mounted() {
       let id = this.$route.params.id
-      console.log(id)
       this.fetch({id:id})
   },
   methods: {
