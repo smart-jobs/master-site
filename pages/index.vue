@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="fj xwbox">
-      <!-- <login class="fd1 login" /> -->
+     
       <calendar class="fd1" />
       <imgs class="fd1 zon" />
       <journalism class="fd1 journalism" />
     </div>
     <div class="databox fj">
-      
+       <service class="fd1 login" />
       <jobs-widget class="fd2" />
     </div>
   </div>
@@ -15,6 +15,7 @@
 
 <script>
 import Journalism from '~/components/layout/Journalism';
+import service from '~/components/layout/service/index';
 import imgs from '~/components/utils/imgs';
 import calendar from '~/components/utils/calendar';
 import JobsWidget from '~/components/widget/jobs';
@@ -28,6 +29,7 @@ export default {
     imgs,
     calendar,
     JobsWidget,
+    service
   },
 }; // l轮播图宽度为424
 </script>

@@ -60,7 +60,6 @@ export default {
       this.k = x.getDate(); // 所有日
       this.arr = [];
       for (let i = 1; i <= this.k; i++) {
-        let z = this.date.setFullYear(this.y, this.m, i); // 星期
         let w = this.date.getDay(); // 星期几
         this.arr.push([i, w, i]);
         if (i == this.k) {
@@ -194,7 +193,7 @@ export default {
 .data {
   width: 80%;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 700;
 }
 .week {

@@ -28,6 +28,12 @@ export const actions = {
     }
     return res;
   },
+  async query2({ commit }, { page,pagesize,column }) {
+    const skip = (page - 1) * pagesize;
+    const params = { skip, limit: pagesize, column: column };
+    const res = await this.$axios.$get(api.query, { params });
+    return res;
+  },
   async fetch({ commit }, { id }) {
     const res = await this.$axios.$get(`${api.fetch}?id=${id}`);
     if (res.errcode === 0) {

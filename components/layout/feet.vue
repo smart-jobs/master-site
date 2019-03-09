@@ -9,16 +9,14 @@
         <a href="">联系我们</a>
       </div>
       <div class="fj">
-        <p class="">{{sites && sites.copyright}}</p>
+        <p class="">{{config && config.copyright}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-
-const { mapActions, mapState } = createNamespacedHelpers('news');
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -26,13 +24,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['site'])
   },
   mounted() {
-    this.site()
   },
   computed: {
-    ...mapState(['sites']),
+    ...mapGetters(['config'])
   }
 };
 </script>

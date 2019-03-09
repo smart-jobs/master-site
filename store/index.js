@@ -12,7 +12,7 @@ export const state = () => ({
 export const actions = {
   async nuxtServerInit({ commit, dispatch }, { req, app, error }) {
     const _tenant = 'master';
-    console.log(`call nuxtServerInit for ${_tenant}...`);
+    // console.log(`call nuxtServerInit for ${_tenant}...`);
 
     const res = await this.$axios.$get(`http://smart.jilinjobswx.cn/www/api/cms/site/config`, { params: { _tenant } });
     if (res && res.errcode) {
@@ -21,7 +21,7 @@ export const actions = {
       return;
     }
     if (!res.data) {
-      console.error('fetch site config fail, invalid code: ', tenant);
+      // console.error('fetch site config fail, invalid code: ', tenant);
       error({ message: '获取网站配置信息失败' });
       return;
     }

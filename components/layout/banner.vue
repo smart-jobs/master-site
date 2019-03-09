@@ -6,16 +6,14 @@
       <img :src="bj2" v-else class="bottom">
     </div>
     <div class="logobox">
-      <div class="logo" v-if="logo2 == null">{{sites && sites.name}} | 就业信息网</div>
+      <div class="logo" v-if="logo2 == null">{{config && config.name}} | 就业信息网</div>
       <img :src="logo2" v-else class="logo">
     </div>
   </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-
-const { mapActions, mapState } = createNamespacedHelpers('news');
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'home',
@@ -27,13 +25,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['site'])
   },
   mounted() {
-    this.site()
   },
   computed: {
-    ...mapState(['sites']),
+    ...mapGetters(['config'])
   }
 }
 </script>

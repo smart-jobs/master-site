@@ -25,12 +25,12 @@ export default {
     };
   },
   mounted() {
-    this.query({page:this.page,pagesize:this.pagesize,column:'guide'})
+    this.query({page:this.page,pagesize:this.pagesize,column:'policy'})
   },
   methods: {
     ...mapActions(['query']),
     handleCurrentChange(val) {
-      this.query({page:val,pagesize:this.pagesize,column:'guide'})
+      this.query({page:val,pagesize:this.pagesize,column:'policy'})
     },
     Obtain(item) {
       let _id = item._id

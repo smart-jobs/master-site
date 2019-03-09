@@ -2,7 +2,7 @@
   <div class="box">
     <div class="fj titlebox">
       <div class="fd1 title">焦点新闻</div>
-      <div class="fd2 txt">
+      <div class="fd2 txt" @click="href">
         MORE
         <img src="/img/z1.jpg" class="icon">
       </div>
@@ -65,6 +65,9 @@ export default {
     btn(index) {
       this.idx = index - 1
       this.set()
+    },
+    href () {
+      location.href = '/news/focus'
     }
   },
   mounted() {

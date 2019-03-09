@@ -3,7 +3,7 @@
     <div class="txtbox">
       <div class="fj titlebox">
         <div class="fd1 title">就业快讯</div>
-        <div class="fd2 txt">
+        <div class="fd2 txt" @click="all">
           MORE
           <img src="/img/z1.jpg" class="icon">
         </div>
@@ -42,6 +42,9 @@ export default {
       let _id = item._id
       this.$router.push('/news/flash/'+_id)
     },
+    all () {
+      location.href = '/news/flash'
+    }
   },
   computed: {
     ...mapState(['items']),
@@ -108,6 +111,7 @@ export default {
   text-overflow: ellipsis;
 }
 li {
+  cursor: pointer;
   display: block;
   line-height: 30px;
   padding: 10px 0 9px 0px;

@@ -90,7 +90,7 @@ export default {
 .btn {
   width: 33.3%;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 600;
   line-height: 2.5em;
   border-right: 1px solid #ddd;
@@ -105,7 +105,7 @@ export default {
   color: #60b0f4;
   line-height: 2.5em;
   border-bottom: 1px solid #ddd;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .icon {
   margin-top: 4%;

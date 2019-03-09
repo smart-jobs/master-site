@@ -1,5 +1,4 @@
 const pkg = require('./package')
-console.log(pkg)
 module.exports = {
   mode: 'universal',
 
