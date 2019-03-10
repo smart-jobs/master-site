@@ -17,6 +17,7 @@
     "@nuxtjs/axios": "^5.4.1",
     "@stomp/stompjs": "^5.2.0",
     "element-ui": "^2.6.1",
+    "express-session": "^1.15.6",
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.5.0",
     "moment": "^2.24.0",
