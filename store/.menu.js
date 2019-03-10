@@ -40,30 +40,27 @@ const menu = [{
   label: '招聘信息',
   link: '/jobs/jobinfo',
   key: 'jobs',
-  children: [
-    {
-      label: '招聘信息',
-      link: '/jobs/jobinfo',
-      key: 'jobinfo',
-    }, {
-      label: '招聘会',
-      link: '/jobs/jobfair',
-      key: 'jobfair',
-    }, {
-      label: '宣讲会',
-      link: '/jobs/campus',
-      key: 'campus',
-    }],
+  children: [{
+    label: '招聘信息',
+    link: '/jobs/jobinfo',
+    key: 'jobinfo',
+  }, {
+    label: '招聘会',
+    link: '/jobs/jobfair',
+    key: 'jobfair',
+  }, {
+    label: '宣讲会',
+    link: '/jobs/campus',
+    key: 'campus',
+  }],
+}, {
+  label: '高校分站列表',
+  link: '/sites',
+  key: 'sites',
 }, {
   label: '联系我们',
   link: '/about/contact',
   key: 'about',
-},
-{
-  label: '分站列表',
-  link: '/websitelist',
-  key: 'about',
-}
-];
+}];
 
 export default menu;

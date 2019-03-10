@@ -6,7 +6,7 @@
       <img :src="bj2" v-else class="bottom">
     </div>
     <div class="logobox">
-      <div class="logo" v-if="logo2 == null">{{config && config.name}} | 就业信息网</div>
+      <div class="logo" v-if="logo2 == null">{{config && config.name}}</div>
       <img :src="logo2" v-else class="logo">
     </div>
   </div>
@@ -57,7 +57,7 @@ export default {
 .logobox {
   width: 1200px;
   position: relative;
-  margin: 100px auto;
+  margin: 50px auto;
   font-size: 3em;
   font-family:'楷体';
 }
