@@ -1,7 +1,7 @@
 {
   "name": "master-site",
   "version": "1.0.0",
-  "description": "My kryptonian Nuxt.js project",
+  "description": "智慧就业云平台中心主站",
   "author": "God_Z",
   "private": true,
   "scripts": {
