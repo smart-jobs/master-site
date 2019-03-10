@@ -2,33 +2,30 @@
   <div class="box">
     <div class="txtbox">
       <div class="abox">
-        <a href="">首页</a>
-        <a href="">就业服务</a>
-        <a href="">新闻公告</a>
-        <a href="">招聘信息</a>
-        <a href="">联系我们</a>
+        <a href>首页</a>
+        <a href>就业服务</a>
+        <a href>新闻公告</a>
+        <a href>招聘信息</a>
+        <a href>联系我们</a>
       </div>
       <div class="fj">
-        <p class="">{{config && config.copyright}}</p>
+        <p class>{{config && config.copyright}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
-  },
-  mounted() {
-  },
+  methods: {},
+  mounted() {},
   computed: {
-    ...mapGetters(['config'])
+    ...mapGetters(["config"])
   }
 };
 </script>
