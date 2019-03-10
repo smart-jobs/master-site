@@ -45,9 +45,8 @@ export default {
       this.query({ paging: { page: val, size: this.size } });
     },
     Obtain(index) {
-      let _id = this.items[index]._id;
       //跳转地址  前面取分站信息  后面写id
-      location.href = 'http://www.baidu.com'
+      location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobinfo/${item._id}`;
     },
   },
   mounted() {

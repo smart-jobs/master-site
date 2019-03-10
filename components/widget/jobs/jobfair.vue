@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main">
-      <div class="m2box" v-for="(item,index) in tops" :key="index" @click="btn(index)">
+      <div class="m2box" v-for="(item,index) in tops" :key="index" @click="btn(item)">
         <div class="txtbox2 fd1">
           <p class="txt2">招聘会</p>
         </div>
@@ -27,9 +27,8 @@ export default {
   },
   methods: {
     ...mapActions(['top']),
-    btn (index) {
-      let _id = this.tops[index]._id;
-      location.href = '/jobs/jobfair/'+_id
+    btn (item) {
+      location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobfair/${item._id}`;
     }
   },
   mounted() {
