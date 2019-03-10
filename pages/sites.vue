@@ -1,36 +1,35 @@
 <template>
   <div class="boxone">
     <div class="main">
-      <a  v-for="(item,index) in lists" :key="index" :href="'http://'+item.domain">{{item && item.name}}</a>
+      <a v-for="(item, index) in lists" :key="index" :href="'http://' + item.domain">{{ item && item.name }}</a>
     </div>
   </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers } from 'vuex';
 
-const { mapActions, mapState } = createNamespacedHelpers("news");
+const { mapActions, mapState } = createNamespacedHelpers('news');
 export default {
-  name: "website_list",
+  name: 'website_list',
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
-    ...mapActions(["list"])
+    ...mapActions(['list']),
   },
   mounted() {
-      this.list()
+    this.list();
   },
   computed: {
-    ...mapState(["lists"])
-  }
+    ...mapState(['lists']),
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-@import "~@/assets/jobs.less";
+@import '~@/assets/jobs.less';
 .main {
   width: 100%;
   display: flex;

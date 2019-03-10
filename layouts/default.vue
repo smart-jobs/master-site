@@ -1,9 +1,15 @@
 <template>
   <div>
-    <banner />
-    <navx />
-    <nuxt />
-    <feet />
+    <div class="header">
+      <banner />
+      <navx />
+    </div>
+    <div class="content">
+      <nuxt />
+    </div>
+    <div class="footer">
+      <feet />
+    </div>
   </div>
 </template>
 
@@ -67,5 +73,13 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+</style>
+<style scoped>
+.content {
+  margin: 2em 0;
+}
+.content > div {
+  min-height: 400px;
 }
 </style>
