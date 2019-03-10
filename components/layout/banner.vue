@@ -19,8 +19,8 @@ export default {
   name: 'home',
   data() {
     return {
-      bj1: '/img/1477572201-3251.jpg',
-      bj2: '/img/bg-shade.png',
+      bj1: '/www/img/1477572201-3251.jpg',
+      bj2: '/www/img/bg-shade.png',
       logo2: null
     }
   },

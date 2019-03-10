@@ -1,12 +1,12 @@
 <template>
   <div class="box">
     <div class="fj btnbox">
-      <img src="/img/web_icon_left_dis.png" class="left fd1" @click="up">
+      <img src="/www/img/web_icon_left_dis.png" class="left fd1" @click="up">
       <div class="fd1 data">
         <p>招聘日历</p>
         {{this.y}}年{{this.m+1}}月
       </div>
-      <img src="/img/web_icon_right_dis.png" class="right fd2" @click="dw">
+      <img src="/www/img/web_icon_right_dis.png" class="right fd2" @click="dw">
     </div>
     <div class="week">
       <span>日</span>

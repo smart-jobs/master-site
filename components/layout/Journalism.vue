@@ -5,7 +5,7 @@
         <div class="fd1 title">就业快讯</div>
         <div class="fd2 txt" @click="all">
           MORE
-          <img src="/img/z1.jpg" class="icon">
+          <img src="/www/img/z1.jpg" class="icon">
         </div>
       </div>
       <ul class="ul">

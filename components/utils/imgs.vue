@@ -4,7 +4,7 @@
       <div class="fd1 title">焦点新闻</div>
       <div class="fd2 txt" @click="href">
         MORE
-        <img src="/img/z1.jpg" class="icon">
+        <img src="/www/img/z1.jpg" class="icon">
       </div>
     </div>
     <ul>
@@ -30,23 +30,23 @@ export default {
       seta: '',
       list: [
         {
-          uri: '/img/push_1.jpg',
+          uri: '/www/img/push_1.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助1'
         },
         {
-          uri: '/img/push_2.jpg',
+          uri: '/www/img/push_2.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助2'
         },
         {
-          uri: '/img/push_3.jpg',
+          uri: '/www/img/push_3.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助3'
         },
         {
-          uri: '/img/push_4.jpg',
+          uri: '/www/img/push_4.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助4'
         },
         {
-          uri: '/img/push_5.jpg',
+          uri: '/www/img/push_5.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助5'
         }
       ]

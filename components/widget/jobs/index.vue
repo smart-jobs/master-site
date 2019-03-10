@@ -11,7 +11,7 @@
         >{{item.label}}</div>
       </div>
       <div class="all fd2">
-        <img src="/img/z1.jpg" class="icon fd2">
+        <img src="/www/img/z1.jpg" class="icon fd2">
         <span class="fd2 a" @click="all">MORE</span>
       </div>
     </div>

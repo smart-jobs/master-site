@@ -3,7 +3,7 @@
     <ul>
       <li class="fj" v-for="(item,index) in items" :key="index" @click="Obtain(index)">
         <div class="fd1 fj txtbox">
-          <img src="/img/logox.jpg" class="img fd1">
+          <img src="/www/img/logox.jpg" class="img fd1">
           <div class="fd1 titbox">
             <a @click="Obtain(index)">{{item.title}}</a>
             <p>工作性质：{{item.nature.name}}</p>
