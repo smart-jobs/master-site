@@ -4,7 +4,7 @@ const topSize = 6;
 const pageSize = 10;
 
 const api = {
-  simple: '/jobs/jobfair/simple',
+  simple: '/jobs/jobfair/simple_g',
   query: '/jobs/jobfair/query_g',
   fetch: '/jobs/jobfair/fetch',
   corp_list: '/jobs/jobfair/corp/list',

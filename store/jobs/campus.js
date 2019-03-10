@@ -1,8 +1,8 @@
 import * as types from '@/store/.mutation.js';
 
 const api = {
-  simple: '/jobs/campus/simple',
-  query: '/jobs/campus/query',
+  simple: '/jobs/campus/simple_g',
+  query: '/jobs/campus/query_g',
   fetch: '/jobs/campus/fetch',
   calendar: '/jobs/campus/calendar'
 };

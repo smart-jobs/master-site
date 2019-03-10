@@ -4,8 +4,8 @@ const topSize = 6;
 const pageSize = 10;
 
 const api = {
-  simple: '/jobs/jobinfo/simple',
-  query: '/jobs/jobinfo/query',
+  simple: '/jobs/jobinfo/simple_g',
+  query: '/jobs/jobinfo/query_g',
   fetch: '/jobs/jobinfo/fetch',
 };
 // initial state
