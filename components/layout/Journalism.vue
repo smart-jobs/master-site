@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       page: 1, // 页数
-      pagesize: 20, // 条数
+      pagesize: 6, // 条数
     };
   },
   mounted() {
@@ -68,6 +68,7 @@ export default {
   width: 90%;
   margin: 0 auto;
   line-height: 3em;
+  overflow: hidden;
 }
 .icon {
   display: inline;
@@ -96,8 +97,6 @@ export default {
   cursor: pointer;
 }
 .ul {
-  height: 250px;
-  overflow: hidden;
   margin: 10px auto;
 }
 .time {

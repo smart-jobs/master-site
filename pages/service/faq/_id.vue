@@ -3,6 +3,7 @@
     <section class="main">
         <h1 class="title">{{ currents && currents.title }}</h1>
         <div class="content" v-html="currents && currents.content"></div>
+        <br>
     </section>
   </div>
 </template>

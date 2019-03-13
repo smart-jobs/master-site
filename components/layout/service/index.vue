@@ -21,9 +21,6 @@
 import faq from "./faq";
 import guide from "./guide";
 import policy from "./policy";
-import { createNamespacedHelpers } from 'vuex';
-
-const { mapActions, mapState } = createNamespacedHelpers('news');
 export default {
   name: 'Journalism',
   components: {
@@ -57,17 +54,14 @@ export default {
     };
   },
   mounted() {
-    this.query({page:this.page,pagesize:this.pagesize,column:'guide'})
   },
   methods: {
-    ...mapActions(['query']),
     btnshow(item) {
       this.key = item.key;
       this.link = item.link;
     },
   },
   computed: {
-    ...mapState(['items']),
   },
   filters: {
     time: function (val){
@@ -89,6 +83,7 @@ export default {
   width: 100%;
   margin: 0 auto;
   line-height: 3em;
+  overflow: hidden;
 }
 .title {
   border-bottom: 2px solid #1e649f;

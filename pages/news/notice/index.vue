@@ -1,6 +1,6 @@
 <template>
   <div class="fd2 data">
-    <ul>
+    <ul><br>
       <li v-for="(item, index) in items" :key="index" class="fj">
         <a class="fd1" @click="Obtain(item)"> {{ item.title }} </a>
         <span class="fd2 spandata"> {{ item.meta.createdAt | time }}
@@ -25,12 +25,12 @@ export default {
     };
   },
   mounted() {
-    this.query({page:this.page,pagesize:this.pagesize,column:'flash'})
+    this.query({page:this.page,pagesize:this.pagesize,column:'notice'})
   },
   methods: {
     ...mapActions(['query']),
     handleCurrentChange(val) {
-      this.query({page:val,pagesize:this.pagesize,column:'flash'})
+      this.query({page:val,pagesize:this.pagesize,column:'notice'})
     },
     Obtain(item) {
       let _id = item._id

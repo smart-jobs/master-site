@@ -1,7 +1,7 @@
 <template>
   <div class="">
       <ul class="ul">
-        <li v-for="(item,index) in items" :key="index" class="fj" @click="btn(item)">
+        <li v-for="(item,index) in itema" :key="index" class="fj" @click="btn(item)">
           <span class="txt2 fd1">{{item.title}}</span>
           <a class="fd2 time">{{item.meta.createdAt | time}}</a>
         </li>
@@ -18,14 +18,14 @@ export default {
   data() {
     return {
       page: 1, // 页数
-      pagesize: 5, // 条数
-      items: null
+      pagesize: 6, // 条数
+      itema: null
     };
   },
   async mounted() {
     const res = await this.query2({page:this.page,pagesize:this.pagesize,column:'guide'})
     if (this.$checkRes(res)) {
-        this.items = res.data
+        this.itema = res.data
     }
   },
   methods: {
@@ -47,8 +47,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .ul {
-  height: 250px;
-  overflow: hidden;
   margin: 10px auto;
   width: 90%;
   margin: 0 auto
