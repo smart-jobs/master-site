@@ -32,7 +32,7 @@ export default {
     ...mapActions(['query2']),
     btn (item) {
       let id = item._id
-      location.href = '/service/guide/'+id
+      location.href = '/www/service/guide/'+id
     }
   },
   filters: {

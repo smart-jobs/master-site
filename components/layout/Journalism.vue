@@ -10,7 +10,7 @@
       </div>
       <ul class="ul">
         <li v-for="(item,index) in items" :key="index" class="fj">
-          <span class="txt2 fd1">{{item.title}}</span>
+          <span class="txt2 fd1" @click="Obtain(item)">{{item.title}}</span>
           <a class="fd2 time">{{item.meta.createdAt | time}}</a>
         </li>
       </ul>
@@ -39,11 +39,12 @@ export default {
       this.query({page:val,pagesize:this.pagesize,column:'flash'})
     },
     Obtain(item) {
+      console.log(123)
       let _id = item._id
       this.$router.push('/news/flash/'+_id)
     },
     all () {
-      location.href = '/news/flash'
+      location.href = '/www/news/flash'
     }
   },
   computed: {
