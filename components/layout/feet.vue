@@ -2,11 +2,11 @@
   <div class="box">
     <div class="txtbox">
       <div class="abox">
-        <a href>首页</a>
-        <a href>就业服务</a>
-        <a href>新闻公告</a>
-        <a href>招聘信息</a>
-        <a href>联系我们</a>
+        <a href="/www/">首页</a>
+        <a href="/www/service/guide">就业服务</a>
+        <a href="/www/news/focus">新闻公告</a>
+        <a href="/www/jobs/jobinfo">招聘信息</a>
+        <a href="/www/about/contact">联系我们</a>
       </div>
       <div class="fj">
         <p class>{{config && config.copyright}}</p>
