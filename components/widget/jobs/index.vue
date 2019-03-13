@@ -11,8 +11,7 @@
         >{{item.label}}</div>
       </div>
       <div class="all fd2">
-        <img src="/www/img/z1.jpg" class="icon fd2">
-        <span class="fd2 a" @click="all">MORE</span>
+        <span class="fd2 a" @click="all">更多>></span>
       </div>
     </div>
 
@@ -63,7 +62,7 @@ export default {
       this.link = item.link;
     },
     all() {
-      location.href = "/jobs/jobinfo";
+      location.href = "/www/jobs/jobinfo";
     }
   },
   mounted() {}
@@ -77,7 +76,6 @@ export default {
   margin-left: 17px;
   height: 370px;
   border-top: 5px solid #60b0f4;
-  border-bottom: 5px solid #60b0f4;
 }
 .header {
   width: 100%;
@@ -113,6 +111,7 @@ export default {
   margin-right: 5%;
 }
 .a {
+  color: #aaaaaa;
   cursor: pointer;
 }
 </style>

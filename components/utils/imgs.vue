@@ -1,20 +1,15 @@
 <template>
   <div class="box">
     <div class="fj titlebox">
-      <div class="fd1 title">焦点新闻</div>
+      <div class="fd1 title"><em class="fd1 g">|</em><em class="fd1 txt">焦点新闻</em></div>
       <div class="fd2 txt" @click="href">
-        MORE
-        <img src="/www/img/z1.jpg" class="icon">
+        更多>>
       </div>
     </div>
     <ul>
       <li :style="{top:top}" class="fd1" v-for="(item,index) in list" :key="index">
         <img :src="item.uri" class="bj img">
-        <!-- <span>{{item.title}}</span> -->
       </li>
-      <div class="fj number">
-        <em class="fd1" :class="{active: idx == index + 1}" v-for="(item,index) in list" :key="index" @click="btn(index+1)">{{index+1}}</em>
-      </div>
     </ul>
   </div>
 </template>
@@ -67,7 +62,7 @@ export default {
       this.set()
     },
     href () {
-      location.href = '/news/focus'
+      location.href = '/www/news/focus'
     }
   },
   mounted() {
@@ -79,15 +74,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box {
-  width: 474px;
-  border: 1px solid rgb(196, 196, 196);
+  width: 841px;
   height: 380px;
   overflow: hidden;
   position: relative;
 }
 ul {
   width: 100%;
-  height: 85%;
+  height: 90%;
   position: relative;
   overflow: hidden;
 }
@@ -114,28 +108,22 @@ span {
 }
 .titlebox {
   border-bottom: 1px solid #ddd;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  margin-bottom: 0.5em;
+  line-height: 2em;
 }
 .title {
   display: inline-block;
-  font-size: 16px;
+  font-size: 1em;
   vertical-align: middle;
   position: relative;
-  margin-bottom: -1px;
-  padding: 0 0 8px;
   font-weight: 700;
-  line-height: 3em;
 }
 .txt {
-  color: #1e649f;
   position: relative;
-  line-height: 3em;
-  height: 3em;
-  top: 0;
-  right: 0;
-  z-index: 5;
-  cursor: pointer;
+  line-height: 2em;
+  color: #aaaaaa;
 }
 .number {
   position: absolute;
@@ -154,5 +142,13 @@ span {
 }
 .active {
   background: #999 !important;
+}
+.title .g {
+  color: #ff9000;
+}
+.title .txt {
+  color: #1c68a2;
+  text-indent: 0.5em;
+  font-weight: 600;
 }
 </style>

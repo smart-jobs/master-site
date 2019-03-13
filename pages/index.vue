@@ -1,21 +1,27 @@
 <template>
   <div>
     <div class="fj xwbox">
-     
       <calendar class="fd1" />
       <imgs class="fd1 zon" />
-      <journalism class="fd1 journalism" />
+      
     </div>
     <div class="databox fj">
-       <service class="fd1 login" />
+      <journalism class="fd1 journalism" />
       <jobs-widget class="fd2" />
+    </div>
+    <div class="databox fj">
+      <guide class="fd1 z"/>
+      <policy class="fd1 z z1"/>
+      <faq class="fd2 z"/>
     </div>
   </div>
 </template>
 
 <script>
 import Journalism from '~/components/layout/Journalism';
-import service from '~/components/layout/service/index';
+import faq from '~/components/layout/service/faq';
+import policy from '~/components/layout/service/policy';
+import guide from '~/components/layout/service/guide';
 import imgs from '~/components/utils/imgs';
 import calendar from '~/components/utils/calendar';
 import JobsWidget from '~/components/widget/jobs';
@@ -29,7 +35,9 @@ export default {
     imgs,
     calendar,
     JobsWidget,
-    service
+    faq,
+    policy,
+    guide
   },
 }; // l轮播图宽度为424
 </script>
@@ -44,13 +52,12 @@ export default {
 }
 .databox {
   width: 1200px;
-  margin: 4rem auto;
+  margin: 2rem auto;
   position: relative;
 }
 .zon {
-  margin: 0 17px;
+  margin-left: 17px;
 }
-.journalism{
-  height: 380px;
-}
+.z{width: 32%}
+.z1{margin: 0 2%}
 </style>

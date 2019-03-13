@@ -1,30 +1,33 @@
 <template>
-  <div class="box">
-    <div class="fj btnbox">
-      <img src="/www/img/web_icon_left_dis.png" class="left fd1" @click="up">
-      <div class="fd1 data">
-        <p>招聘日历</p>
-        {{this.y}}年{{this.m+1}}月
+  <div>
+    <p class="title fj">
+      <span class="fd1 g">|</span>
+      <span class="fd1 txt">招聘日历</span>
+    </p>
+    <div class="box">
+      <div class="fj btnbox">
+        <img src="/www/img/web_icon_left_dis.png" class="left fd1" @click="up">
+        <div class="fd1 data">{{this.y}}/{{this.m+1}}</div>
+        <img src="/www/img/web_icon_right_dis.png" class="right fd1" @click="dw">
       </div>
-      <img src="/www/img/web_icon_right_dis.png" class="right fd2" @click="dw">
-    </div>
-    <div class="week">
-      <span>日</span>
-      <span>一</span>
-      <span>二</span>
-      <span>三</span>
-      <span>四</span>
-      <span>五</span>
-      <span>六</span>
-    </div>
-    <div class="week2 fj">
-      <span
-        class="fd1 yuan"
-        :class="{a1:item[0] == '今',a2:item[0] == '聘' || item[0] == '宣'}"
-        v-for="(item,index) in this.arr"
-        :key="index"
-      >{{item[0]}}</span>
-      <!-- @mouseenter="enter(item[0])" -->
+      <div class="week">
+        <span>日</span>
+        <span>一</span>
+        <span>二</span>
+        <span>三</span>
+        <span>四</span>
+        <span>五</span>
+        <span>六</span>
+      </div>
+      <div class="week2 fj">
+        <span
+          class="fd1 yuan"
+          :class="{a2:item[0] == '聘' || item[0] == '宣'}"
+          v-for="(item,index) in this.arr"
+          :key="index"
+        >{{item[0]}}</span>
+        <!-- @mouseenter="enter(item[0])" -->
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +36,7 @@
 import { createNamespacedHelpers } from "vuex";
 
 const { mapActions } = createNamespacedHelpers("jobs/jobfair");
-const { mapActions:campusactions } = createNamespacedHelpers("jobs/campus");
+const { mapActions: campusactions } = createNamespacedHelpers("jobs/campus");
 export default {
   name: "home",
   data() {
@@ -54,7 +57,7 @@ export default {
   },
   methods: {
     ...mapActions(["calendar"]),
-    ...campusactions(['calendar2']),
+    ...campusactions(["calendar2"]),
     Obtain() {
       let x = new Date(this.y, this.m + 1, 0);
       this.k = x.getDate(); // 所有日
@@ -64,15 +67,6 @@ export default {
         this.arr.push([i, w, i]);
         if (i == this.k) {
           let num = Number(this.arr[0][1]);
-          for (let z = 0; z < this.arr.length; z++) {
-            if (
-              this.d == this.arr[z][0] &&
-              this.m2 == this.m &&
-              this.y2 == this.y
-            ) {
-              this.arr[z][0] = "今";
-            }
-          }
           for (let y = 0; y < num; y++) {
             this.arr.unshift([]);
           }
@@ -122,14 +116,7 @@ export default {
         this.m++;
       }
       this.Obtain();
-    },
-    // enter(number) {
-    //   for (let i = 0; i < this.data.length; i++) {
-    //     if (number == this.data[i].datanum) {
-    //       this.txt = this.data[i].txt;
-    //     }
-    //   }
-    // }
+    }
   },
   async mounted() {
     this.date = new Date();
@@ -154,7 +141,6 @@ export default {
           this.Obtain();
         }
       }
-      
     } else {
       let month = this.y + "-" + (this.m + 1);
       const res = await this.calendar({
@@ -179,19 +165,23 @@ export default {
 <style scoped>
 .box {
   width: 340px;
-  height: 380px;
+  height: 340px;
   border: 1px solid #ddd;
 }
 .left,
 .right {
-  width: 10%;
+  width: 3%;
+  margin-top: 2%;
+}
+.left {
+  margin-left: 32%;
 }
 .btnbox {
   width: 90%;
   margin: 5% auto;
 }
 .data {
-  width: 80%;
+  width: 30%;
   text-align: center;
   font-size: 1em;
   font-weight: 700;
@@ -199,9 +189,8 @@ export default {
 .week {
   width: 100%;
   display: flex;
-  background: #60b0f4;
-  color: #fff;
-  font-size: 1.2em;
+  color: #ddd;
+  font-size: 1em;
   font-weight: 600;
   line-height: 2em;
 }
@@ -213,7 +202,7 @@ export default {
 }
 .week2 {
   width: 100%;
-  color: #999;
+  color: #000;
   font-size: 1.2em;
   font-weight: 600;
   line-height: 2em;
@@ -225,13 +214,9 @@ export default {
   cursor: pointer;
   border-radius: 50%;
 }
-.a1 {
-  background: #60b0f4;
-  color: #fff;
-}
 .a2 {
   color: #fff;
-  background: #00d30b;
+  background: #1c68a2;
 }
 .yuan {
   position: relative;
@@ -241,5 +226,20 @@ export default {
   width: 20%;
   top: -100%;
   left: -10%;
+}
+.title {
+  width: 100%;
+  border: 1px solid #dddddd;
+  line-height: 2em;
+  margin-bottom: 0.5em;
+}
+.title .g {
+  color: #ff9000;
+  text-indent: 1em;
+}
+.title .txt {
+  color: #1c68a2;
+  text-indent: 0.5em;
+  font-weight: 600;
 }
 </style>

@@ -1,23 +1,42 @@
 <template>
   <div class="box">
-    <div class="btn" v-for="(item,index) in menu" :key="index" :class="{a1:a1 == index}" @click="menuClick(item)"
-         @mouseenter="enter1(index)" @mouseleave="leave1">
-      {{item.label}}
-      <div class="Submenu" v-if="item.children && item.children.length &gt; 0" v-show="a1 == index && showSub">
-        <div v-for="(sub, index2) in item.children" :key="index2" @mouseenter="enter2(index2)" @mouseleave="leave2"
-             :class="{a2: a2 == index2}" @click.stop="menuClick(sub)">{{sub.label}}</div>
+    <div class="btn-main">
+      <div
+        class="btn"
+        v-for="(item,index) in menu"
+        :key="index"
+        :class="{a1:a1 == index}"
+        @click="menuClick(item)"
+        @mouseenter="enter1(index)"
+        @mouseleave="leave1"
+      >
+        {{item.label}}
+        <div
+          class="Submenu"
+          v-if="item.children && item.children.length &gt; 0"
+          v-show="a1 == index && showSub"
+        >
+          <div
+            v-for="(sub, index2) in item.children"
+            :key="index2"
+            @mouseenter="enter2(index2)"
+            @mouseleave="leave2"
+            :class="{a2: a2 == index2}"
+            @click.stop="menuClick(sub)"
+          >{{sub.label}}</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import _ from 'lodash';
-import { mapState, createNamespacedHelpers } from 'vuex';
-const { mapState: loginState } = createNamespacedHelpers('login');
+import _ from "lodash";
+import { mapState, createNamespacedHelpers } from "vuex";
+const { mapState: loginState } = createNamespacedHelpers("login");
 
 export default {
-  name: 'navx',
+  name: "navx",
   mounted() {
     this.a1 = this.pageIndex;
   },
@@ -26,18 +45,16 @@ export default {
       a1: -1,
       a2: -1,
       showSub: false,
-      menus: [],
+      menus: []
     };
   },
   computed: {
-    ...mapState(['menu', 'page']),
-    ...loginState(['userinfo']),
+    ...mapState(["menu", "page"]),
+    ...loginState(["userinfo"]),
     pageIndex() {
-      const idx = _.isArray(this.menu) && this.menu.findIndex(p => p.key === this.page);
+      const idx =
+        _.isArray(this.menu) && this.menu.findIndex(p => p.key === this.page);
       return idx;
-    },
-    role: function () {
-      return this.userinfo ? this.userinfo.role : 'guest';
     },
   },
   methods: {
@@ -61,20 +78,20 @@ export default {
     leave2() {
       this.a2 = -1;
     },
-    btn () {
-      location.href = 'user'
+    btn() {
+      location.href = "user";
     }
-  },
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box {
+  width: 100%;
   position: relative;
-  display: flex;
-  background: #1e649f;
-  width: 1200px;
+  background: linear-gradient(#0196c3, #1d66a0);
+  min-width: 1200px;
   color: #fff;
   margin: 0 auto;
   z-index: 9;
@@ -105,5 +122,10 @@ export default {
 }
 .a2 {
   background: #1e649f;
+}
+.btn-main{
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main">
-      <div class="m2box" v-for="(item,index) in tops" :key="index" @click="btn(item)">
+      <div class="m2box" v-for="(item,index) in tops" :key="index" @click="btn(item)"  :class="{xbox:(index%2) == 0}">
         <div class="txtbox2 fd1">
           <p class="txt2">招聘会</p>
         </div>

@@ -1,14 +1,12 @@
 <template>
   <div>
-    <div class="box">
+    <div class="box"  v-if="logo2 == null">
       <img :src="bj1" class="bj">
-      <img :src="bj2" v-if="logo2 == null" class="bottom">
-      <img :src="bj2" v-else class="bottom">
+      <div class="logobox">
+        <div>{{config && config.name}}</div>
+      </div>
     </div>
-    <div class="logobox">
-      <div class="logo" v-if="logo2 == null">{{config && config.name}}</div>
-      <img :src="logo2" v-else class="logo">
-    </div>
+    <img v-else :src="logo2" class="box">
   </div>
 </template>
 
@@ -19,14 +17,16 @@ export default {
   name: 'home',
   data() {
     return {
-      bj1: '/www/img/1477572201-3251.jpg',
-      bj2: '/www/img/bg-shade.png',
+      bj1: '/www/img/banner.jpg',
       logo2: null
     }
   },
   methods: {
   },
   mounted() {
+    if (this.config.banner) {
+      this.logo2 = this.config.banner
+    }
   },
   computed: {
     ...mapGetters(['config'])
@@ -39,7 +39,7 @@ export default {
 .box {
   min-width: 1200px;
   width: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   overflow: hidden;
@@ -56,9 +56,12 @@ export default {
 }
 .logobox {
   width: 1200px;
-  position: relative;
-  margin: 50px auto;
+  position: absolute;
   font-size: 3em;
   font-family:'楷体';
+  left: 20%;
+  top: 25%;
+  color: #0b628e;
+  text-shadow:2px 2px 0px #fff
 }
 </style>

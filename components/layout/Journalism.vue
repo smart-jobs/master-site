@@ -4,13 +4,12 @@
       <div class="fj titlebox">
         <div class="fd1 title">就业快讯</div>
         <div class="fd2 txt" @click="all">
-          MORE
-          <img src="/www/img/z1.jpg" class="icon">
+          更多>>
         </div>
       </div>
       <ul class="ul">
-        <li v-for="(item,index) in items" :key="index" class="fj">
-          <span class="txt2 fd1" @click="Obtain(item)">{{item.title}}</span>
+        <li v-for="(item,index) in items" :key="index" class="fj" @mouseenter="enter(index)">
+          <span class="txt2 fd1" @click="Obtain(item)" :class="{txt3:index == idx}">{{item.title}}</span>
           <a class="fd2 time">{{item.meta.createdAt | time}}</a>
         </li>
       </ul>
@@ -28,6 +27,7 @@ export default {
     return {
       page: 1, // 页数
       pagesize: 6, // 条数
+      idx: '',
     };
   },
   mounted() {
@@ -39,12 +39,14 @@ export default {
       this.query({page:val,pagesize:this.pagesize,column:'flash'})
     },
     Obtain(item) {
-      console.log(123)
       let _id = item._id
       this.$router.push('/news/flash/'+_id)
     },
     all () {
       location.href = '/www/news/flash'
+    },
+    enter (idx) {
+      this.idx = idx
     }
   },
   computed: {
@@ -88,7 +90,7 @@ export default {
   font-weight: 700;
 }
 .txt {
-  color: #1e649f;
+  color: #aaaaaa;
   position: relative;
   line-height: 3em;
   height: 3em;
@@ -96,9 +98,6 @@ export default {
   right: 0;
   z-index: 5;
   cursor: pointer;
-}
-.ul {
-  margin: 10px auto;
 }
 .time {
   width: 50%;
@@ -109,6 +108,10 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: #333;
+}
+.txt3{
+  color: #0e7dd2;
 }
 li {
   cursor: pointer;
@@ -116,12 +119,8 @@ li {
   line-height: 30px;
   padding: 10px 0 9px 0px;
   border-bottom: 1px dashed #ddd;
-  color: #60b0f4;
 }
 a {
   cursor: pointer;
-}
-li a:hover {
-  color: #60b0f4;
 }
 </style>
