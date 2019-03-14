@@ -61,6 +61,13 @@ const menu = [{
   label: '联系我们',
   link: '/www/about/contact',
   key: 'about',
+  children: [
+    {
+      label: '联系我们',
+      link: '/www/about/contact',
+      key: 'contact',
+    }
+  ]
 }];
 
 export default menu;

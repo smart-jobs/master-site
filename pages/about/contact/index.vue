@@ -1,6 +1,10 @@
 <template>
-  <div class="box">
-    <span class="title">联系我们</span>
+  <div class="data fd2">
+    <div class="fj xt">
+      <img src="img/x.png" class="xg fd1">
+      <div class="fd1 xtxt">联系我们</div>
+    </div>
+    <br>
     <section class="main">
       <div v-html="contents"></div>
     </section>
@@ -27,24 +31,7 @@ export default {
   },
 };
 </script>
-<style scoped>
-.box {
-  position: relative;
-  z-index: 2;
-  width: 1200px;
-  padding-bottom: 2em;
-  background: #f0f0f0;
-  margin: 0 auto;
-}
-.title {
-  width: 100%;
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: 700;
-  line-height: 6em;
-  border-bottom: 2px solid #000;
-}
-.main {
-  padding: 2em;
-}
+<style lang="less" scoped>
+@import '~@/assets/secondary.less';
+.main{width: 90%;margin: 0 auto}
 </style>

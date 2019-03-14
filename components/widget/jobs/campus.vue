@@ -3,7 +3,7 @@
     <div class="main">
       <div class="mbox fd1 fj" v-for="(item,index) in tops" :key="index" @click="btn(item)" :class="{xbox:(index%2) == 0}">
         <div class="imgbox fd1">
-          <img src="/www/img/logo2.png" class="bj">
+          <img src="/www/img/logo1.png" class="bj">
         </div>
         <div class="txtbox fd1">
           <p class="title">{{item.title || item.subject}}</p>
