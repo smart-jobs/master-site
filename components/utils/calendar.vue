@@ -167,6 +167,7 @@ export default {
   width: 340px;
   height: 340px;
   border: 1px solid #ddd;
+  border-radius:4px; 
 }
 .left,
 .right {
@@ -232,6 +233,7 @@ export default {
   border: 1px solid #dddddd;
   line-height: 2em;
   margin-bottom: 0.5em;
+  border-radius:4px; 
 }
 .title .g {
   color: #ff9000;

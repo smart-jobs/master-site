@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main">
-      <div class="mbox fd1 fj" v-for="(item,index) in tops" :key="index" @click="btn(item)"  :class="{xbox:(index%2) == 0}">
+      <div class="mbox fd1 fj" v-for="(item,index) in tops" :key="index" @click="btn(item)" :class="{xbox:(index%2) == 0}">
         <div class="imgbox fd1">
           <img src="/www/img/logox.png" class="bj">
         </div>

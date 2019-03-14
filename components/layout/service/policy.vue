@@ -117,7 +117,7 @@ export default {
   color: #333;
 }
 .txt3 {
-  color: #0e7dd2;
+  color: #ff9000;
 }
 li {
   cursor: pointer;

@@ -66,6 +66,7 @@ export default {
 .box {
   width: 340px;
   border: 1px solid rgb(196, 196, 196);
+  border-radius:4px; 
 }
 .txtbox {
   width: 90%;

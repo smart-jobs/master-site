@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="main">
-      <div class="m2box" v-for="(item,index) in tops" :key="index" @click="btn(item)"  :class="{xbox:(index%2) == 0}">
+      <div class="m2box" v-for="(item,index) in tops" :key="index" @click="btn(item)" :class="{xbox:(index%2) == 0}">
         <div class="txtbox2 fd1">
-          <p class="txt2">招聘会</p>
+          <img src="/www/img/logo1.png" class="bj">
         </div>
         <div class="fd1 titlebox">
           <div class="title title2">{{item.subject}}</div>
