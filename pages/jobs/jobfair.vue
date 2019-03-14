@@ -53,7 +53,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 @import '~@/assets/jobs.less';
-.titbox {
-  width: 90%;
-}
 </style>
