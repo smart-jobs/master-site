@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="title fj">
-      <span class="fd1 g">|</span>
+      <img src="img/x.png" class="fd1 g">
       <span class="fd1 txt">招聘日历</span>
     </p>
     <div class="box">
@@ -236,8 +236,8 @@ export default {
   border-radius:4px; 
 }
 .title .g {
-  color: #ff9000;
-  text-indent: 1em;
+  margin-top: 2%;
+  margin-left: 1em
 }
 .title .txt {
   color: #1c68a2;

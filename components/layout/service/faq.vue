@@ -3,7 +3,7 @@
     <div class="txtbox">
       <div class="fj titlebox">
         <div class="fd1 title">
-          <em class="fd1 g">|</em>
+          <img src="img/x.png" class="fd1 g">
           <em class="fd1 txt">常见问题</em>
         </div>
         <div class="fd2 txt" @click="all">更多>></div>
@@ -134,7 +134,7 @@ a {
   cursor: pointer;
 }
 .title .g {
-  color: #ff9000;
+  margin-top: 20%;
 }
 .title .txt {
   color: #1c68a2;

@@ -1,10 +1,11 @@
 <template>
   <div class="box">
     <div class="fj titlebox">
-      <div class="fd1 title"><em class="fd1 g">|</em><em class="fd1 txt">焦点新闻</em></div>
-      <div class="fd2 txt" @click="href">
-        更多>>
+      <div class="fd1 title">
+        <img src="img/x.png" class="fd1 g">
+        <em class="fd1 txt">焦点新闻</em>
       </div>
+      <div class="fd2 txt" @click="href">更多>></div>
     </div>
     <ul>
       <li :style="{top:top}" class="fd1" v-for="(item,index) in list" :key="index">
@@ -16,59 +17,59 @@
 
 <script>
 export default {
-  name: 'imgs',
+  name: "imgs",
   data() {
     return {
       idx: 1,
-      top: '',
-      idxx: '',
-      seta: '',
+      top: "",
+      idxx: "",
+      seta: "",
       list: [
         {
-          uri: '/www/img/push_1.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助1'
+          uri: "/www/img/push_1.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助1"
         },
         {
-          uri: '/www/img/push_2.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助2'
+          uri: "/www/img/push_2.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助2"
         },
         {
-          uri: '/www/img/push_3.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助3'
+          uri: "/www/img/push_3.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助3"
         },
         {
-          uri: '/www/img/push_4.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助4'
+          uri: "/www/img/push_4.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助4"
         },
         {
-          uri: '/www/img/push_5.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助5'
+          uri: "/www/img/push_5.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助5"
         }
       ]
-    }
+    };
   },
   methods: {
     set() {
       if (this.idx == 5) {
-        this.idx = 1
+        this.idx = 1;
       } else {
-        this.idx++
+        this.idx++;
       }
-      let he = document.getElementsByClassName('img')[0].height
-      this.top = -(this.idx - 1) * he + 'px'
+      let he = document.getElementsByClassName("img")[0].height;
+      this.top = -(this.idx - 1) * he + "px";
     },
     btn(index) {
-      this.idx = index - 1
-      this.set()
+      this.idx = index - 1;
+      this.set();
     },
-    href () {
-      location.href = '/www/news/focus'
+    href() {
+      location.href = "/www/news/focus";
     }
   },
   mounted() {
-    setInterval(this.set, 5000)
+    setInterval(this.set, 5000);
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -144,7 +145,7 @@ span {
   background: #999 !important;
 }
 .title .g {
-  color: #ff9000;
+  margin-top: 10%;
 }
 .title .txt {
   color: #1c68a2;

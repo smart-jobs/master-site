@@ -1,7 +1,10 @@
 <template>
   <div class="fd2 data">
+    <div class="fj xt">
+      <img src="img/x.png" class="xg fd1">
+      <div class="fd1 xtxt">政策文件</div>
+    </div>
     <ul>
-      <br>
       <li v-for="(item, index) in items" :key="index" class="fj">
         <a class="fd1" @click="Obtain(item)"> {{ item.title }} </a>
         <span class="fd2 spandata"> {{ item.meta.createdAt | time }}
