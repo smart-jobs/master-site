@@ -42,7 +42,7 @@ export default {
   height: 65vh;
   background: url('../static/img/bj.png') no-repeat;
   background-size:100%;
-  background-position:flex;
+  // background-attachment:fixed;
   overflow-y: auto;
 }
 a {

@@ -100,28 +100,27 @@ export default {
   min-width: 140px;
   text-align: center;
   line-height: 2.5em;
-  font-size: 1.2em;
+  font-size: 1em;
   cursor: pointer;
   position: relative;
 }
 .box .btn:hover {
-  background: #60b0f4;
+  background: #0097c4;
 }
 .a1 {
-  background: #60b0f4;
+  background: #0097c4;
 }
 .Submenu {
   position: absolute;
   width: 100%;
   left: 0;
   top: 100%;
-  background: #60b0f4;
+  background: #fff;
+  color: #0097c4;
+  border: 1px solid rgb(240, 233, 233);
 }
 .Submenu div:hover {
-  background: #1e649f;
-}
-.a2 {
-  background: #1e649f;
+  color: #ff9000;
 }
 .btn-main{
   width: 1200px;

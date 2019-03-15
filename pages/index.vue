@@ -3,7 +3,6 @@
     <div class="fj xwbox">
       <calendar class="fd1" />
       <imgs class="fd1 zon" />
-      
     </div>
     <div class="databox fj">
       <journalism class="fd1 journalism" />
