@@ -53,6 +53,18 @@ export default {
         let t = date.getDate();
         let h = date.getHours();
         let f = date.getMinutes();
+        if (y < 10) {
+          y = '0'+y
+        }
+        if (t < 10) {
+          t = '0'+t
+        }
+        if (h < 10) {
+          h = '0'+h
+        }
+         if (f < 10) {
+          f = '0'+f
+        }
         return n + "-" + y + "-" + t + " " + h + ":" + f;
       }
     }
