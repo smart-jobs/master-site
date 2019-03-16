@@ -1,8 +1,12 @@
+import _ from 'lodash';
 import * as types from './.mutation';
 import menu from './.menu';
-
+//扁平化展开的菜单项
+const menus = menu.map(p => _.isArray(p.children) ? [p, ...p.children] : [p])
+  .reduce((p, c) => [...p, ...c], []);
 export const state = () => ({
   menu: menu,
+  menus: menus,
   page: '', // 一级栏目
   column: '',// 二级栏目
   config: null, // 网站配置信息
