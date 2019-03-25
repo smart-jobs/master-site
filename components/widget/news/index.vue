@@ -1,23 +1,17 @@
 <template>
- <div class="box">
+  <div class="box">
     <div class="txtbox">
       <div class="fj titlebox">
         <div class="fd1 title">
-          <img src="img/x.png" class="fd1 g">
-          <em class="fd1 txt">政策文件</em>
+          <img src="img/x.png" class="fd1 g" />
+          <em class="fd1 txt">{{ label }}</em>
         </div>
         <div class="fd2 txt" @click="all">更多>></div>
       </div>
       <ul class="ul">
-        <li
-          v-for="(item,index) in items"
-          :key="index"
-          class="fj"
-          @click="btn(item)"
-          @mouseenter="enter(index)"
-        >
-          <span class="txt2 fd1" :class="{txt3:index == idx}">{{item.title}}</span>
-          <a class="fd2 time" :class="{txt3:index == idx}">{{item.meta.createdAt | time}}</a>
+        <li v-for="(item, index) in items" :key="index" class="fj" @click="btn(item)" @mouseenter="enter(index)">
+          <span class="txt2 fd1" :class="{ txt3: index == idx }">{{ item.title }}</span>
+          <a class="fd2 time" :class="{ txt3: index == idx }">{{ item.meta.createdAt | time }}</a>
         </li>
       </ul>
     </div>
@@ -30,40 +24,53 @@ import { createNamespacedHelpers } from 'vuex';
 const { mapActions } = createNamespacedHelpers('news');
 export default {
   name: 'Journalism',
+  props: {
+    column: { type: String, required: true },
+    label: { type: String, required: true },
+    url: { type: String, required: true },
+  },
   data() {
     return {
       page: 1, // 页数
       pagesize: 4, // 条数
       items: null,
-      idx:''
+      idx: '',
     };
   },
   async mounted() {
-    const res = await this.query2({page:this.page,pagesize:this.pagesize,column:'policy'})
+    const res = await this.query2({
+      page: this.page,
+      pagesize: this.pagesize,
+      column: this.column,
+    });
     if (this.$checkRes(res)) {
-        this.items = res.data
+      this.items = res.data;
     }
   },
   methods: {
     ...mapActions(['query2']),
-    btn (item) {
-      let id = item._id
-      location.href = '/www/service/policy/'+id
+    btn(item) {
+      let id = item._id;
+      if (this.url.endsWith('/')) {
+        location.href = `${this.url}${id}`;
+      } else {
+        location.href = `${this.url}/${id}`;
+      }
     },
     all() {
-      location.href = "/www/service/policy";
+      location.href = this.url;
     },
     enter(idx) {
       this.idx = idx;
-    }
+    },
   },
   filters: {
-    time: function (val){
-      let a = val.slice(0,10)
-      return a
-    }
-  }
-}
+    time: function(val) {
+      let a = val.slice(0, 10);
+      return a;
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

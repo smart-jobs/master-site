@@ -9,21 +9,19 @@
       <jobs-widget class="fd2" />
     </div>
     <div class="databox fj">
-      <guide class="fd1 z"/>
-      <policy class="fd1 z z1"/>
-      <faq class="fd2 z"/>
+      <news-widget class="fd1 z" column="guide" label="就业指导" url="/www/service/guide"/>
+      <news-widget class="fd1 z z1" column="policy" label="政策文件" url="/www/service/policy"/>
+      <news-widget class="fd2 z" column="faq" label="常见问题" url="/www/service/faq"/>
     </div>
   </div>
 </template>
 
 <script>
 import Journalism from '~/components/layout/Journalism';
-import faq from '~/components/layout/service/faq';
-import policy from '~/components/layout/service/policy';
-import guide from '~/components/layout/service/guide';
 import imgs from '~/components/utils/imgs';
 import calendar from '~/components/utils/calendar';
 import JobsWidget from '~/components/widget/jobs';
+import NewsWidget from '~/components/widget/news';
 export default {
   name: 'home',
   data() {
@@ -34,9 +32,7 @@ export default {
     imgs,
     calendar,
     JobsWidget,
-    faq,
-    policy,
-    guide
+    NewsWidget,
   },
 }; // l轮播图宽度为424
 </script>
