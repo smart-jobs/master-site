@@ -1,17 +1,17 @@
 <template>
   <div>
     <div class="fj xwbox">
-      <calendar class="fd1" />
-      <imgs class="fd1 zon" />
+      <calendar class="left" />
+      <imgs class="left zon" />
     </div>
     <div class="databox fj">
-      <journalism class="fd1 journalism" />
-      <jobs-widget class="fd2" />
+      <journalism class="left journalism" />
+      <jobs-widget class="right" />
     </div>
     <div class="databox fj">
-      <news-widget class="fd1 z" column="guide" label="就业指导" url="/www/service/guide"/>
-      <news-widget class="fd1 z z1" column="policy" label="政策文件" url="/www/service/policy"/>
-      <news-widget class="fd2 z" column="faq" label="常见问题" url="/www/service/faq"/>
+      <news-widget class="left z" column="guide" label="就业指导" url="/www/service/guide"/>
+      <news-widget class="left z z1" column="policy" label="政策文件" url="/www/service/policy"/>
+      <news-widget class="right z" column="faq" label="常见问题" url="/www/service/faq"/>
     </div>
   </div>
 </template>

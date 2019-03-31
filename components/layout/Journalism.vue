@@ -2,15 +2,15 @@
   <div class="box">
     <div class="txtbox">
       <div class="fj titlebox">
-        <div class="fd1 title">就业快讯</div>
-        <div class="fd2 txt" @click="all">
+        <div class="left title">就业快讯</div>
+        <div class="right txt" @click="all">
           更多>>
         </div>
       </div>
       <ul class="ul">
         <li v-for="(item,index) in items" :key="index" class="fj" @mouseenter="enter(index)">
-          <span class="txt2 fd1" @click="Obtain(item)" :class="{txt3:index == idx}">{{item.title}}</span>
-          <a class="fd2 time">{{item.meta.createdAt | time}}</a>
+          <span class="txt2 left" @click="Obtain(item)" :class="{txt3:index == idx}">{{item.title}}</span>
+          <a class="right time">{{item.meta.createdAt | time}}</a>
         </li>
       </ul>
     </div>

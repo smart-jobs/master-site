@@ -1,17 +1,18 @@
 <template>
-  <div class="box">
-    <div class="txtbox">
+  <div class="box" :class="{ boxed: border }">
+    <loading v-if="loading"/>
+    <div class="txtbox" v-else>
       <div class="fj titlebox">
-        <div class="fd1 title">
-          <img src="img/x.png" class="fd1 g" />
-          <em class="fd1 txt">{{ label }}</em>
+        <div class="left title">
+          <img src="img/x.png" class="left g" />
+          <em class="left txt">{{ label }}</em>
         </div>
-        <div class="fd2 txt" @click="all">更多>></div>
+        <div class="right txt" @click="all">更多>></div>
       </div>
       <ul class="ul">
         <li v-for="(item, index) in items" :key="index" class="fj" @click="btn(item)" @mouseenter="enter(index)">
-          <span class="txt2 fd1" :class="{ txt3: index == idx }">{{ item.title }}</span>
-          <a class="fd2 time" :class="{ txt3: index == idx }">{{ item.meta.createdAt | time }}</a>
+          <span class="txt2 left" :class="{ act: index == idx }">{{ item.title }}</span>
+          <span class="right date" :class="{ act: index == idx }">{{ item.meta.createdAt | date }}</span>
         </li>
       </ul>
     </div>
@@ -20,35 +21,40 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
+import Loading from '@/components/utils/loading';
 
 const { mapActions } = createNamespacedHelpers('news');
 export default {
-  name: 'Journalism',
+  name: 'NewsPod',
+  components: {
+    Loading,
+  },
   props: {
     column: { type: String, required: true },
     label: { type: String, required: true },
     url: { type: String, required: true },
+    border: { type: Boolean, default: false },
+    limit: { type: Number, default: 4 },
   },
   data() {
     return {
-      page: 1, // 页数
-      pagesize: 4, // 条数
       items: null,
       idx: '',
+      loading: true,
     };
   },
   async mounted() {
-    const res = await this.query2({
-      page: this.page,
-      pagesize: this.pagesize,
+    const res = await this.top({
+      limit: this.limit,
       column: this.column,
     });
+    this.loading = false;
     if (this.$checkRes(res)) {
       this.items = res.data;
     }
   },
   methods: {
-    ...mapActions(['query2']),
+    ...mapActions(['top']),
     btn(item) {
       let id = item._id;
       if (this.url.endsWith('/')) {
@@ -65,7 +71,7 @@ export default {
     },
   },
   filters: {
-    time: function(val) {
+    date: function(val) {
       let a = val.slice(0, 10);
       return a;
     },
@@ -112,18 +118,18 @@ export default {
   z-index: 5;
   cursor: pointer;
 }
-.time {
-  width: 50%;
+.date {
+  width: 30%;
   text-align: right;
 }
 .txt2 {
-  width: 50%;
+  width: 70%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #333;
 }
-.txt3 {
+.act {
   color: #ff9000;
 }
 li {
@@ -133,9 +139,6 @@ li {
   padding: 10px 0 9px 0px;
   border-bottom: 1px dashed #ddd;
 }
-a {
-  cursor: pointer;
-}
 .title .g {
   margin-top: 20%;
 }
@@ -143,5 +146,9 @@ a {
   color: #1c68a2;
   text-indent: 0.5em;
   font-weight: 600;
+}
+.boxed {
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
 }
 </style>

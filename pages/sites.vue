@@ -1,8 +1,8 @@
 <template>
   <div class="boxone">
     <div class="fj xt">
-        <img src="img/x.png" class="xg fd1">
-        <div class="fd1 xtxt">高校分站列表</div>
+        <img src="img/x.png" class="xg left">
+        <div class="left xtxt">高校分站列表</div>
       </div>
       <br>
     <div class="main">

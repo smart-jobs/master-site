@@ -1,20 +1,21 @@
 <template>
-  <div class="fd2 data">
-    <section class="main">
+  <div class="right data">
+    <loading v-if="loading"/>
+    <section class="main" v-else>
       <div class="top">
         <h1 class="title">{{ currents && currents.title }}</h1>
-        <span
-          class="txt"
-        >发布单位：{{currents && currents.issuer}}； 发布时间：{{currents && currents.meta.updatedAt | data}}；</span>
-        <br>
+        <p class="desc">
+          <span>发布单位：{{currents && currents.issuer}}</span>
+          <span> 发布时间：{{currents && currents.meta.updatedAt | date}}</span>
+        </p>
       </div>
       <div class="fj">
-        <div class="fd2 bq" v-for="(item,index) in currents && currents.tags" :key="index">{{item}}</div>
+        <div class="right bq" v-for="(item,index) in currents && currents.tags" :key="index">{{item}}</div>
       </div>
       <div class="content" v-html="currents && currents.content"></div>
       <div class="fj">
-        <div class="fd1 lj" v-for="(item,index) in currents && currents.attachment" :key="index" @click="hre(item)">
-          <img src="img/q.png" class="q fd1">
+        <div class="left lj" v-for="(item,index) in currents && currents.attachment" :key="index" @click="hre(item)">
+          <img src="img/q.png" class="q left">
           <span class="name">{{item.name}}</span>
         </div>
       </div>
@@ -24,19 +25,32 @@
 </template>
 
 <script>
+import moment from 'moment';
 import { createNamespacedHelpers } from "vuex";
+import Loading from '@/components/utils/loading';
 
-const { mapActions, mapState } = createNamespacedHelpers("news");
+const { mapState, mapActions } = createNamespacedHelpers("news");
 export default {
-  data() {
-    return {};
+  // async asyncData({ store, params }) {
+  //   console.log(params);
+  //   const res = await store.dispatch('news/fetch', { id: params.id })
+  //   return { currents: res.data };
+  // },
+  components: {
+    Loading,
   },
-  mounted() {
+  data() {
+    return {
+      loading: true,
+    };
+  },
+  async mounted() {
     let id = this.$route.params.id;
-    this.fetch({ id: id });
+    await this.fetch({ id: id });
+    this.loading = false;
   },
   methods: {
-    ...mapActions(["fetch"]),
+    ...mapActions(['fetch']),
     hre (item) {
       location.href = item.uri
     }
@@ -45,28 +59,9 @@ export default {
     ...mapState(["currents"])
   },
   filters: {
-    data: function(val) {
-      if (val !== null) {
-        let date = new Date(val);
-        let n = date.getFullYear();
-        let y = date.getMonth() + 1;
-        let t = date.getDate();
-        let h = date.getHours();
-        let f = date.getMinutes();
-        if (y < 10) {
-          y = '0'+y
-        }
-        if (t < 10) {
-          t = '0'+t
-        }
-        if (h < 10) {
-          h = '0'+h
-        }
-         if (f < 10) {
-          f = '0'+f
-        }
-        return n + "-" + y + "-" + t + " " + h + ":" + f;
-      }
+    date: function(val) {
+      if(val) return moment(val).format('YYYY-MM-DD hh:mm:ss');
+      return '';
     }
   }
 };
@@ -79,6 +74,7 @@ export default {
   padding: 10px 20px;
   .top {
     width: 100%;
+    padding-bottom: 1em;
     border-bottom: 1px solid #ddd;
   }
   .title {
@@ -93,8 +89,11 @@ export default {
     padding-bottom: 1em;
     border-bottom: 1px solid #ddd;
   }
-  .txt {
+  .desc {
     text-align: center;
+    font-size: .9em;
+    color: gray;
+    span { display: inline-block };
   }
   .bq {
     width: 3.5em;

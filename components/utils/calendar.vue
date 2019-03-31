@@ -1,14 +1,14 @@
 <template>
   <div>
     <p class="title fj">
-      <img src="img/x.png" class="fd1 g">
-      <span class="fd1 txt">招聘日历</span>
+      <img src="img/x.png" class="left g">
+      <span class="left txt">招聘日历</span>
     </p>
     <div class="box">
       <div class="fj btnbox">
-        <img src="/www/img/web_icon_left_dis.png" class="left fd1" @click="up">
-        <div class="fd1 data">{{this.y}}/{{this.m+1}}</div>
-        <img src="/www/img/web_icon_right_dis.png" class="right fd1" @click="dw">
+        <img src="/www/img/web_icon_left_dis.png" class="dis left" @click="up">
+        <div class="left data">{{this.y}}/{{this.m+1}}</div>
+        <img src="/www/img/web_icon_right_dis.png" class="dis right" @click="dw">
       </div>
       <div class="week">
         <span>日</span>
@@ -21,7 +21,7 @@
       </div>
       <div class="week2 fj">
         <span
-          class="fd1 yuan"
+          class="left yuan"
           :class="{a2:item[0] == '聘' || item[0] == '宣'}"
           v-for="(item,index) in this.arr"
           :key="index"
@@ -169,13 +169,15 @@ export default {
   border: 1px solid #ddd;
   border-radius:4px; 
 }
-.left,
-.right {
+.dis {
   width: 3%;
   margin-top: 2%;
 }
-.left {
+.dis.left {
   margin-left: 32%;
+}
+.dis.right {
+  float: left;
 }
 .btnbox {
   width: 90%;

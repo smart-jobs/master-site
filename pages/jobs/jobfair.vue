@@ -1,10 +1,10 @@
 <template>
-  <div class="fd2 data">
+  <div class="right data">
     <ul>
       <li class="fj" v-for="(item,index) in items" :key="index" @click="Obtain(item)">
-        <div class="fd1 fj txtbox">
-          <img src="/www/img/logo2.png" class="img fd1">
-          <div class="fd1 titbox">
+        <div class="left fj txtbox">
+          <img src="/www/img/logo2.png" class="img left">
+          <div class="left titbox">
             <a>{{item.subject}}</a>
             <p>举办时间：{{item.date}} {{item.time}}</p>
             <p>举办地址：{{item.address}}</p>

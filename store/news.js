@@ -4,7 +4,7 @@ const api = {
   query: '/cms/news/list',
   fetch: '/cms/news/fetch',
   site: '/cms/site/config',
-  content: '/cms/site/content', 
+  content: '/cms/site/content',
   list: '/cms/site/list',
 };
 // initial state
@@ -14,12 +14,12 @@ export const state = () => ({
   total: 0,
   sites: null,
   contents: null,
-  lists:null
+  lists: null
 });
 
 // actions
 export const actions = {
-  async query({ commit }, { page,pagesize,column }) {
+  async query({ commit }, { page, pagesize, column }) {
     const skip = (page - 1) * pagesize;
     const params = { skip, limit: pagesize, column: column };
     const res = await this.$axios.$get(api.query, { params });
@@ -28,37 +28,34 @@ export const actions = {
     }
     return res;
   },
-  async query2({ commit }, { page,pagesize,column }) {
-    const skip = (page - 1) * pagesize;
-    const params = { skip, limit: pagesize, column: column };
-    const res = await this.$axios.$get(api.query, { params });
-    return res;
+  async top({ commit }, { limit, column }) {
+    return await this.$axios.$get(api.query, { params: { limit, column } });
   },
   async fetch({ commit }, { id }) {
     const res = await this.$axios.$get(`${api.fetch}?id=${id}`);
     if (res.errcode === 0) {
-        commit(types.LOADED_DETAIL, res.data);
+      commit(types.LOADED_DETAIL, res.data);
     }
     return res;
   },
   async site({ commit }) {
     const res = await this.$axios.$get(api.site);
     if (res.errcode === 0) {
-        commit(types.PLATFORM_INIT, res.data);
+      commit(types.PLATFORM_INIT, res.data);
     }
     return res;
   },
   async content({ commit }) {
     const res = await this.$axios.$get(api.content);
     if (res.errcode === 0) {
-        commit(types.LOGIN_SUCCESS, res.data);
+      commit(types.LOGIN_SUCCESS, res.data);
     }
     return res;
   },
   async list({ commit }) {
     const res = await this.$axios.$get(api.list);
     if (res.errcode === 0) {
-        commit(types.SHOW_LOADING, res.data);
+      commit(types.SHOW_LOADING, res.data);
     }
     return res;
   },

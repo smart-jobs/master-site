@@ -11,8 +11,8 @@ span{display: block}
 a {text-decoration:none;color:#333;}
 a:hover {text-decoration:none;color:#333;}
 
-.fd1{float: left;}
-.fd2{float: right;}
+.left{float: left;}
+.right{float: right;}
 
 .zj {clear:both;}
 .fj:after {content:'';display:block;height:0;visibility:hidden;clear:both;}

@@ -1,13 +1,13 @@
 <template>
-  <div class="fd2 data">
+  <div class="right data">
     <div class="fj xt">
-      <img src="img/x.png" class="xg fd1" />
-      <div class="fd1 xtxt">{{ columnName }}</div>
+      <img src="img/x.png" class="xg left" />
+      <div class="left xtxt">{{ columnName }}</div>
     </div>
     <ul>
       <li v-for="(item, index) in items" :key="index" class="fj">
-        <router-link class="fd1" :to="item._id" append>{{ item.title }}</router-link>
-        <span class="fd2 spandata"> {{ item.meta.createdAt | time }} </span>
+        <router-link class="left" :to="item._id" append>{{ item.title }}</router-link>
+        <span class="right spandata"> {{ item.meta.createdAt | time }} </span>
       </li>
     </ul>
     <el-pagination

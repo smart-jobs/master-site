@@ -1,14 +1,14 @@
 <template>
   <div class="box">
     <div class="fj titlebox">
-      <div class="fd1 title">
-        <img src="img/x.png" class="fd1 g">
-        <em class="fd1 txt">焦点新闻</em>
+      <div class="left title">
+        <img src="img/x.png" class="left g">
+        <em class="left txt">焦点新闻</em>
       </div>
-      <div class="fd2 txt" @click="href">更多>></div>
+      <div class="right txt" @click="href">更多>></div>
     </div>
     <ul>
-      <li :style="{top:top}" class="fd1" v-for="(item,index) in list" :key="index">
+      <li :style="{top:top}" class="left" v-for="(item,index) in list" :key="index">
         <img :src="item.uri" class="bj img">
       </li>
     </ul>

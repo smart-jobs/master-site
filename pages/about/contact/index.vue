@@ -1,8 +1,8 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <div class="fj xt">
-      <img src="img/x.png" class="xg fd1">
-      <div class="fd1 xtxt">联系我们</div>
+      <img src="img/x.png" class="xg left">
+      <div class="left xtxt">联系我们</div>
     </div>
     <br>
     <section class="main">

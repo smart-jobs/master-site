@@ -1,5 +1,5 @@
 <template>
-  <div class="fd1 tab">
+  <div class="left tab">
     <div class="tabs" v-for="(item,index) in data" :key="index">
         <div class="tabx" @click="menuClick(item)" :class="{ a1: item.key == activated }">{{item.label}}</div>
       </div>

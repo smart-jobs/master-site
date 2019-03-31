@@ -2,14 +2,14 @@
   <div>
     <div class="main">
       <div class="m2box" v-for="(item,index) in tops" :key="index" @click="btn(item)" :class="{xbox:(index%2) == 0}">
-        <div class="txtbox2 fd1">
+        <div class="txtbox2 left">
           <img src="/www/img/logo2.png" class="bj">
         </div>
-        <div class="fd1 titlebox">
+        <div class="left titlebox">
           <div class="title title2">{{item.subject}}</div>
           <p class="p">分站信息：{{item.unit}}</p>
         </div>
-        <div class="fd1 right2">{{item.meta.createdAt | date}}</div>
+        <div class="left right2">{{item.meta.createdAt | date}}</div>
       </div>
     </div>
   </div>

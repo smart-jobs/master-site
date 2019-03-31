@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="header fj">
-      <div class="btnbox fd1">
+      <div class="btnbox left">
         <div
           class="btn"
           v-for="(item,index) in tabs"
@@ -10,8 +10,8 @@
           @mouseenter="btnshow(item)"
         >{{item.label}}</div>
       </div>
-      <div class="all fd2">
-        <span class="fd2 a" @click="all">更多>></span>
+      <div class="all right">
+        <span class="right a" @click="all">更多>></span>
       </div>
     </div>
 

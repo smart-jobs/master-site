@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="main">
-      <div class="mbox fd1 fj" v-for="(item,index) in tops" :key="index" @click="btn(item)" :class="{xbox:(index%2) == 0}">
-        <div class="imgbox fd1">
+      <div class="mbox left fj" v-for="(item,index) in tops" :key="index" @click="btn(item)" :class="{xbox:(index%2) == 0}">
+        <div class="imgbox left">
           <img src="/www/img/logox.png" class="bj">
         </div>
-        <div class="txtbox fd1">
+        <div class="txtbox left">
           <p class="title">{{item.title || item.subject}}</p>
           <p class="txt">{{item.corpname}}</p>
         </div>
-        <div class="data fd2">
+        <div class="data right">
           <span>{{item.meta.createdAt | date}}</span>
         </div>
       </div>

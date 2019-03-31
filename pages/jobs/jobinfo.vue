@@ -1,22 +1,22 @@
 <template>
-  <div class="fd2 data">
+  <div class="right data">
     <ul>
       <li class="fj" v-for="(item,index) in items" :key="index" @click="Obtain(item)">
-        <div class="fd1 fj txtbox">
-          <img src="/www/img/logox.png" class="img fd1">
-          <div class="fd1 titbox">
+        <div class="left fj txtbox">
+          <img src="/www/img/logox.png" class="img left">
+          <div class="left titbox">
             <a @click="Obtain(index)">{{item.title}}</a>
             <p>工作性质：{{item.nature.name}}</p>
             <p>需求人数：{{item.count}}</p>
             <p>所在城市：{{item.city.name}}</p>
           </div>
-          <div class="fd1 titbox">
+          <div class="left titbox">
             <br>
             <p>薪资待遇：{{item.salary.name}}</p>
             <p>最低学历：{{item.xlreqs.name}}</p>
           </div>
         </div>
-        <span class="fd2 spandata">{{item.meta.updatedAt | date('YYYY-MM-DD')}}</span>
+        <span class="right spandata">{{item.meta.updatedAt | date('YYYY-MM-DD')}}</span>
       </li>
     </ul>
     <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="size"
