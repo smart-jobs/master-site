@@ -5,7 +5,7 @@
       <imgs class="left zon" />
     </div>
     <div class="databox fj">
-      <journalism class="left journalism" />
+      <news-widget class="left flash" column="flash" label="就业快讯" url="/www/service/guide" :border="true" :limit="6"/>
       <jobs-widget class="right" />
     </div>
     <div class="databox fj">
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import Journalism from '~/components/layout/Journalism';
 import imgs from '~/components/utils/imgs';
 import calendar from '~/components/utils/calendar';
 import JobsWidget from '~/components/widget/jobs';
@@ -28,7 +27,6 @@ export default {
     return {};
   },
   components: {
-    Journalism,
     imgs,
     calendar,
     JobsWidget,
@@ -52,6 +50,10 @@ export default {
 }
 .zon {
   margin-left: 17px;
+}
+.flash{height: 373px;}
+.login {
+  height: 380px;
 }
 .z{width: 32%}
 .z1{margin: 0 2%}

@@ -1,7 +1,6 @@
 <template>
   <div class="box" :class="{ boxed: border }">
-    <loading v-if="loading"/>
-    <div class="txtbox" v-else>
+    <div class="txtbox">
       <div class="fj titlebox">
         <div class="left title">
           <img src="img/x.png" class="left g" />
@@ -9,9 +8,14 @@
         </div>
         <div class="right txt" @click="all">更多>></div>
       </div>
-      <ul class="ul">
+      <loading class="pending" v-if="loading"/>
+      <ul class="ul" v-else>
         <li v-for="(item, index) in items" :key="index" class="fj" @click="btn(item)" @mouseenter="enter(index)">
-          <span class="txt2 left" :class="{ act: index == idx }">{{ item.title }}</span>
+          <el-tooltip :content="item.title" effect="light">
+            <span class="txt2 left" :class="{ act: index == idx }">
+              {{ item.title }}
+            </span>
+          </el-tooltip>
           <span class="right date" :class="{ act: index == idx }">{{ item.meta.createdAt | date }}</span>
         </li>
       </ul>
@@ -81,8 +85,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.box {
+.box, .pending {
   width: 340px;
+  min-height: 200px;
 }
 .titlebox {
   border-bottom: 1px solid #ddd;

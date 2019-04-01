@@ -1,14 +1,14 @@
 <template>
   <div>
     <p class="title fj">
-      <img src="img/x.png" class="left g">
+      <img src="img/x.png" class="left g" />
       <span class="left txt">招聘日历</span>
     </p>
     <div class="box">
       <div class="fj btnbox">
-        <img src="/www/img/web_icon_left_dis.png" class="dis left" @click="up">
-        <div class="left data">{{this.y}}/{{this.m+1}}</div>
-        <img src="/www/img/web_icon_right_dis.png" class="dis right" @click="dw">
+        <img src="/www/img/web_icon_left_dis.png" class="dis left" @click="up" />
+        <div class="left data">{{ this.cal.format('YYYY/M') }}</div>
+        <img src="/www/img/web_icon_right_dis.png" class="dis right" @click="dw" />
       </div>
       <div class="week">
         <span>日</span>
@@ -20,12 +20,17 @@
         <span>六</span>
       </div>
       <div class="week2 fj">
-        <span
-          class="left yuan"
-          :class="{a2:item[0] == '聘' || item[0] == '宣'}"
-          v-for="(item,index) in this.arr"
-          :key="index"
-        >{{item[0]}}</span>
+        <span class="left yuan" v-for="(item, index) in padding" :key="'pad_' + index"></span>
+        <template v-for="(item, index) in dates">
+          <span class="left yuan a2" :key="index" v-if="items_fair[index]">
+            <el-tooltip :content="items_fair[index].subject" effect="light"><span class="inner">聘</span></el-tooltip>
+          </span>
+          <span class="left yuan a2" :key="index" v-else-if="items_campus[index]">
+            <el-tooltip :content="items_campus[index].subject" effect="light"><span class="inner">宣</span></el-tooltip>
+          </span>
+          <span class="left yuan" :key="index" v-else>{{ index + 1 }}</span>
+        </template>
+        <!-- <span class="left yuan" :class="{ a2: item[0] == '聘' || item[0] == '宣' }" v-for="(item, index) in this.arr" :key="index">{{ item[0] }}</span> -->
         <!-- @mouseenter="enter(item[0])" -->
       </div>
     </div>
@@ -33,131 +38,81 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers } from 'vuex';
+import moment from 'moment';
 
-const { mapActions } = createNamespacedHelpers("jobs/jobfair");
-const { mapActions: campusactions } = createNamespacedHelpers("jobs/campus");
+const { mapActions: fairActions } = createNamespacedHelpers('jobs/jobfair');
+const { mapActions: campusActions } = createNamespacedHelpers('jobs/campus');
 export default {
-  name: "home",
+  name: 'Calendar',
   data() {
     return {
-      date: "",
-      arr: [], // 二位数组
-      y: "", // 动态年
-      y2: "", // 当前年
-      m: "", // 动态月
-      m2: "", // 当前月
-      d: "", // 当前日
-      k: "", // 当前月最大天
-      txt: "",
-      show1: false,
-      list: [],
-      items: []
+      items_fair: [],
+      items_campus: [],
+      cal: moment(),
     };
   },
   methods: {
-    ...mapActions(["calendar"]),
-    ...campusactions(["calendar2"]),
-    Obtain() {
-      let x = new Date(this.y, this.m + 1, 0);
-      this.k = x.getDate(); // 所有日
-      this.arr = [];
-      for (let i = 1; i <= this.k; i++) {
-        let w = this.date.getDay(); // 星期几
-        this.arr.push([i, w, i]);
-        if (i == this.k) {
-          let num = Number(this.arr[0][1]);
-          for (let y = 0; y < num; y++) {
-            this.arr.unshift([]);
-          }
-          // 宣讲会
-          for (let k = 0; k < this.items.length; k++) {
-            for (let x = 0; x < this.arr.length; x++) {
-              let a = this.items[k].date.slice(8, 10);
-              if (
-                a == this.arr[x][2] &&
-                this.m2 == this.m &&
-                this.y2 == this.y
-              ) {
-                this.arr[x][0] = "宣";
-              }
-            }
-          }
-          // 招聘会
-          for (let k = 0; k < this.list.length; k++) {
-            for (let x = 0; x < this.arr.length; x++) {
-              let a = this.list[k].date.slice(8, 10);
-              if (
-                a == this.arr[x][2] &&
-                this.m2 == this.m &&
-                this.y2 == this.y
-              ) {
-                this.arr[x][0] = "聘";
-              }
-            }
-          }
-        }
-      }
+    ...fairActions({
+      cal_fair: 'calendar',
+    }),
+    ...campusActions({
+      cal_campus: 'calendar',
+    }),
+    async fetchData(month) {
+      this.items_fair = [];
+      this.items_campus = [];
+      let res = await this.cal_fair({ month });
+      if (!this.$checkRes(res)) return;
+      this.items_fair = res.data;
+      res = await this.cal_campus({ month });
+      if (!this.$checkRes(res)) return;
+      this.items_campus = res.data;
     },
     up() {
-      if (this.m < 1) {
-        this.m = 11;
-        this.y--;
-      } else {
-        this.m--;
-      }
-      this.Obtain();
+      this.cal = moment(this.cal).subtract(1, 'month');
     },
     dw() {
-      if (this.m >= 11) {
-        this.m = 0;
-        this.y++;
-      } else {
-        this.m++;
-      }
-      this.Obtain();
-    }
+      this.cal = moment(this.cal).add(1, 'month');
+    },
   },
-  async mounted() {
-    this.date = new Date();
-    this.y = this.date.getFullYear(); // 当前年
-    this.y2 = this.date.getFullYear(); // 当前年
-    this.m = this.date.getMonth(); // 当前月
-    this.m2 = this.date.getMonth(); // 当前月
-    this.d = this.date.getDate(); // 当前日
-    if (this.m < 10) {
-      let m = "0" + (this.m + 1);
-      let month = this.y + "-" + m;
-      const res = await this.calendar({
-        month: month
-      });
-      if (this.$checkRes(res)) {
-        this.list = res.data;
-        const rest = await this.calendar2({
-          month: month
-        });
-        if (this.$checkRes(rest)) {
-          this.items = rest.data;
-          this.Obtain();
-        }
-      }
-    } else {
-      let month = this.y + "-" + (this.m + 1);
-      const res = await this.calendar({
-        month: month
-      });
-      if (this.$checkRes(res)) {
-        this.list = res.data;
-        const rest = await this.calendar2({
-          month: month
-        });
-        if (this.$checkRes(rest)) {
-          this.items = rest.data;
-          this.Obtain();
-        }
-      }
-    }
-  }
+  mounted() {
+    this.fetchData(this.cal.format('YYYY-MM'));
+  },
+  watch: {
+    cal() {
+      this.fetchData(this.cal.format('YYYY-MM'));
+    },
+  },
+  computed: {
+    padding() {
+      const len = moment(this.cal)
+        .date(1)
+        .day();
+      return new Array(len);
+    },
+    dates() {
+      // 取当月最后一天
+      const len = moment(this.cal)
+        .add(1, 'month')
+        .date(1)
+        .subtract(1, 'days')
+        .date();
+      return new Array(len);
+    },
+    dates_fair() {
+      return this.items_fair.reduce((p, c) => {
+        p[moment(c.date).date()] = c;
+        return p;
+      }, []);
+    },
+    dates_campus() {
+      return this.items_campus.reduce((p, c) => {
+        p[moment(c.date).date()] = c;
+        return p;
+      }, []);
+    },
+  },
 };
 </script>
 
@@ -167,7 +122,7 @@ export default {
   width: 340px;
   height: 340px;
   border: 1px solid #ddd;
-  border-radius:4px; 
+  border-radius: 4px;
 }
 .dis {
   width: 3%;
@@ -235,15 +190,18 @@ export default {
   border: 1px solid #dddddd;
   line-height: 2em;
   margin-bottom: 0.5em;
-  border-radius:4px; 
+  border-radius: 4px;
 }
 .title .g {
   margin-top: 2%;
-  margin-left: 1em
+  margin-left: 1em;
 }
 .title .txt {
   color: #1c68a2;
   text-indent: 0.5em;
   font-weight: 600;
+}
+span.inner {
+  display: inline;
 }
 </style>

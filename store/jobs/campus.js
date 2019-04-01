@@ -40,7 +40,7 @@ export const actions = {
     if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
     return res;
   },
-  async calendar2({ commit }, { month }) {
+  async calendar({ commit }, { month }) {
     const res = await this.$axios.$get(`${api.calendar}?month=${month}`);
     return res;
   }
