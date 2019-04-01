@@ -27,6 +27,7 @@ app.use(session({
 async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config);
+  await nuxt.ready();
   app.set('nuxt', nuxt);
 
   // Build only in dev mode
