@@ -1,6 +1,8 @@
 import _ from 'lodash';
+import consola from 'consola';
 import * as types from './.mutation';
 import menu from './.menu';
+
 //扁平化展开的菜单项
 const menus = menu.map(p => _.isArray(p.children) ? [p, ...p.children] : [p])
   .reduce((p, c) => [...p, ...c], []);
@@ -16,23 +18,23 @@ export const state = () => ({
 export const actions = {
   async nuxtServerInit({ commit, dispatch }, { req, app, error }) {
     const _tenant = 'master';
-    // console.log(`call nuxtServerInit for ${_tenant}...`);
+    consola.info(`loading config for ${_tenant}...`);
 
-    const res = await this.$axios.$get(`http://smart.jilinjobswx.cn/www/api/cms/site/config`, { params: { _tenant } });
+    const res = await this.$axios.$get('/cms/site/config', { params: { _tenant } });
+    consola.debug('loaded:', res);
     if (res && res.errcode) {
-      console.error('fetch site config fail:', res);
+      consola.error('fetch site config fail:', res);
       error({ message: res.errmsg });
       return;
     }
     if (!res.data) {
-      // console.error('fetch site config fail, invalid code: ', tenant);
+      // consola.error('fetch site config fail, invalid code: ', tenant);
       error({ message: '获取网站配置信息失败' });
       return;
     }
-    // console.log(res.data);
     commit(types.SITE_INIT, res.data);
 
-    // console.log(app.$axios);
+    // consola.log(app.$axios);
   },
 }
 

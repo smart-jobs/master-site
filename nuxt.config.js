@@ -1,4 +1,7 @@
 const pkg = require('./package')
+
+const API_PORT = process.env.API_PORT || 3500;
+
 module.exports = {
   mode: 'universal',
   server: {
@@ -55,10 +58,13 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
     proxy: true,
     prefix: '/www/api',
+    port: API_PORT,
   },
   proxy: [
-    'http://smart.jilinjobswx.cn/www/api',
-    'http://smart.jilinjobswx.cn/ws',
+    // 'http://smart.jilinjobswx.cn/www/api',
+    // 'http://smart.jilinjobswx.cn/ws',
+    'http://smart.chinahuian.cn/www/api',
+    'http://smart.chinahuian.cn/ws',
   ],
 
   router: {
