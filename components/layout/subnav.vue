@@ -16,7 +16,11 @@ export default {
   methods: {
     // 一级菜单点击
     menuClick(item) {
-      if (item && item.link) location.href = item.link;
+      if (item && item.link) {
+        location.href = item.link;
+      } else if (item && item.path) {
+        this.$router.push(item.path);
+      }
     },
   },
 };

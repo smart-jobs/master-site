@@ -27,7 +27,7 @@
 <script>
 import moment from 'moment';
 import { createNamespacedHelpers } from "vuex";
-import Loading from '@/components/utils/loading';
+import Loading from '@components/utils/loading';
 
 const { mapState, mapActions } = createNamespacedHelpers("news");
 export default {

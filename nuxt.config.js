@@ -1,4 +1,5 @@
-const pkg = require('./package')
+import { resolve } from 'path';
+import pkg from './package';
 
 const API_PORT = process.env.API_PORT || 3500;
 
@@ -8,52 +9,47 @@ module.exports = {
     port: 3500,
   },
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: '智慧就业',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/www/css/css.css'}
-    ]
+    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: pkg.description }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }, { rel: 'stylesheet', href: '/www/css/css.css' }],
   },
 
   /*
-  ** Customize the progress-bar color
-  */
+   ** Customize the progress-bar color
+   */
   loading: { color: '#3B8070' },
 
   /*
-  ** Global CSS
-  */
-  css: [
-    'element-ui/lib/theme-chalk/index.css'
-  ],
+   ** Global CSS
+   */
+  css: ['element-ui/lib/theme-chalk/index.css'],
 
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: [
-    '@/plugins/element-ui', '@/plugins/axios', '@/plugins/check-res', '@/plugins/naf-dict', '@/plugins/filters',
-    { src: '@/plugins/stomp', ssr: false },
-    { src: '@/plugins/userinfo', ssr: false },
+    '@plugins/element-ui',
+    '@plugins/axios',
+    '@plugins/check-res',
+    '@plugins/naf-dict',
+    '@plugins/filters',
+    { src: '@plugins/stomp', ssr: false },
+    { src: '@plugins/userinfo', ssr: false },
   ],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
   ],
   /*
-  ** Axios module configuration
-  */
+   ** Axios module configuration
+   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     proxy: true,
@@ -75,17 +71,17 @@ module.exports = {
   loader: [
     {
       test: /\.less$/,
-      loaders: 'style-loader!css-loader!less-loader'
-    }
+      loaders: 'style-loader!css-loader!less-loader',
+    },
   ],
-  
+
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     /*
-    ** You can extend webpack config here
-    */
+     ** You can extend webpack config here
+     */
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
@@ -93,10 +89,16 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+          exclude: /(node_modules)/,
+        });
       }
-    }
+      // 设置别名
+      config.resolve.alias = {
+        ...(config.resolve.alias || {}),
+        '@components': resolve(__dirname, '../school-site/components'),
+        '@plugins': resolve(__dirname, '../school-site/plugins'),
+      };
+    },
   },
   vue: {
     config: {
@@ -105,18 +107,19 @@ module.exports = {
         brokerURL: '/ws', // ws://${location.host}/ws
         connectHeaders: {
           host: 'smart',
-          login: "web",
-          passcode: "web123"
+          login: 'web',
+          passcode: 'web123',
         },
         // debug: true,
         reconnectDelay: 5000,
         heartbeatIncoming: 4000,
-        heartbeatOutgoing: 4000
+        heartbeatOutgoing: 4000,
       },
       weixin: {
         // baseUrl: `http://192.168.0.7:8000${url_prefix}/weixin`,
         baseUrl: `http://smart.jilinjobswx.cn/weixin`,
-      }
-    }
+      },
+      platform: 'master',
+    },
   },
-}
+};

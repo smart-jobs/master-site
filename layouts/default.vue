@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import banner from '~/components/layout/banner';
-import navx from '~/components/layout/navx';
-import feet from '~/components/layout/feet';
+import banner from '@/components/layout/banner';
+import navx from '@/components/layout/navx';
+import feet from '@/components/layout/feet';
 import { detect } from 'detect-browser';
 import semver from 'semver';
 

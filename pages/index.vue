@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import imgs from '~/components/utils/imgs';
-import calendar from '~/components/utils/calendar';
-import JobsWidget from '~/components/widget/jobs';
-import NewsWidget from '~/components/widget/news';
+import imgs from '@components/utils/imgs';
+import calendar from '@components/utils/calendar';
+import JobsWidget from '@components/widget/jobs';
+import NewsWidget from '@components/widget/news';
 export default {
   name: 'home',
   data() {
