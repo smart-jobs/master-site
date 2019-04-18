@@ -36,22 +36,22 @@ export default {
   data() {
     return {
       key: 0,
-      link: "jobinfo",
+      link: "jobfair",
       tabs: [
         {
           label: "招聘会",
           link: "jobfair",
-          key: 1
+          key: 0
         },
         {
           label: "宣讲会",
           link: "campus",
-          key: 2
+          key: 1
         },
         {
           label: "招聘信息",
           link: "jobinfo",
-          key: 3
+          key: 2
         },
       ]
     };
