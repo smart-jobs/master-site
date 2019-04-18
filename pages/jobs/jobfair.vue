@@ -8,7 +8,7 @@
             <a>{{item.subject}}</a>
             <p>举办时间：{{item.date}} {{item.time}}</p>
             <p>举办地址：{{item.address}}</p>
-            <p>分站信息：{{item.unit}}</p>
+            <p>举办高校：{{item.unit|dict('unit')}}</p>
           </div>
         </div>
       </li>
@@ -41,8 +41,9 @@ export default {
       location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobfair/${item._id}`;
     },
   },
-  mounted() {
-    this.query({ paging: { page: this.page, size: this.size } });
+  async mounted() {
+    await this.$loadDict('unit');
+    await this.query({ paging: { page: this.page, size: this.size } });
   },
   computed: {
     ...mapState(['items','total']),
