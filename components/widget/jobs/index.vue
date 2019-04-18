@@ -15,9 +15,9 @@
       </div>
     </div>
 
-    <tab-item-jobinfo v-show="link == 'jobinfo'"/>
     <tab-item-jobfair v-show="link == 'jobfair'"/>
     <tab-item-campus v-show="link == 'campus'"/>
+    <tab-item-jobinfo v-show="link == 'jobinfo'"/>
   </div>
 </template>
 
