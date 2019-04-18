@@ -1,5 +1,5 @@
-import { resolve } from 'path';
-import pkg from './package';
+const { resolve } = require('path');
+const pkg = require('./package');
 
 const API_PORT = process.env.API_PORT || 3500;
 
