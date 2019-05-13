@@ -26,9 +26,7 @@ const Plugin = {
       },
     });
     // 4. 添加实例方法
-    Vue.prototype.$platform = function get() {
-      return Vue.config.platform;
-    };
+    Vue.prototype.$platform = Vue.config.platform;
   },
 };
 export default () => {
