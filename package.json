@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env CONSOLA_LEVEL=3 nuxt",
-    "build": "nuxt build",
+    "build": "nuxt API_PORT=8083 build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
